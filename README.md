@@ -23,3 +23,12 @@ Options:
 ```
 
 ## Workflows
+
+When a tag is pushed and new release will be automatically created through GitHub actions.
+
+## Protobufs
+
+This project uses [pronto](https://github.com/AppsFlyer/pronto) to handle protobufs in clojure.
+It also used [lein-protodeps](https://github.com/AppsFlyer/) to automatically pull and compile protobufs from [the Meshtastic Protobuf Definitions repo](https://github.com/meshtastic/protobufs).
+
+If you need to update the protobufs, running `lein protodeps generate` should suffice.
