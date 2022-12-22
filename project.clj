@@ -6,6 +6,7 @@
                  [compojure "1.6.1"]
                  [ring "1.9.6"]
                  [ring/ring-defaults "0.3.4"]
+                 [ring-cors "0.1.13"]
                  [com.github.seancorfield/next.jdbc "1.3.847"]
                  [org.xerial/sqlite-jdbc "3.40.0.0"]
                  [org.clojure/data.json "2.4.0"]

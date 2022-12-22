@@ -1,6 +1,7 @@
 (ns meshmon-backend.web
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
+            [ring.middleware.cors :refer [wrap-cors]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [meshmon-backend.db :as db]))
 
@@ -28,4 +29,7 @@ packets ")
 
 (defn app [ds static]
   "Returns the ring app for our web API"
-  (wrap-defaults (app-routes ds static) site-defaults))
+  (-> (app-routes ds static)
+      (wrap-defaults site-defaults)
+      (wrap-cors :access-control-allow-origin [#".*"]
+                 :access-control-allow-methods [:get])))
