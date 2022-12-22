@@ -12,8 +12,12 @@
           stream [start-1 start-2 size-1 size-2 data-1 data-2 data-3]
           ;; should return nils until the last data byte is read
           ;; then it returns the data
-          result (list nil nil nil nil nil nil [data-1 data-2 data-3])]
-      (is (= result (map fsm! stream))))))
+          result (map fsm! stream)
+          nils (take 5 result)
+          data (last result)]
+      (and
+        (is (= nils [nil nil nil nil nil])
+        (is (java.util.Arrays/equals data (byte-array [data-1 data-2 data-3]))))))))
 
 (deftest fsm-no-second-start-test
   (testing "FSM should print an error if it's waiting for start-2 and it

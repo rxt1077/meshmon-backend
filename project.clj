@@ -1,4 +1,4 @@
-(defproject meshmon-backend "0.1.0"
+(defproject meshmon-backend "0.2.0"
   :description "Backend for MeshMon that serves packets from a sqlite3 database"
   :url "http://github.com/rxt1077/MeshMon"
   :min-lein-version "2.0.0"
@@ -17,11 +17,8 @@
   :main meshmon-backend.core
   :aot [meshmon-backend.core]
   :java-source-paths ["src/java"]
-;;  :plugins [[lein-ring "0.12.5"]]
-;;  :ring {:handler meshmon-backend.handler/app}
-;;  :profiles
-;;  {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-;;                        [ring/ring-mock "0.3.2"]]}})
+  :jar-name "meshmon-backend-%s.jar"
+  :uberjar-name "meshmon-backend-%s-standalone.jar"
   :plugins [[com.appsflyer/lein-protodeps "1.0.4"]]
   :lein-protodeps {:output-path "src/java"
                    :proto-version "3.21.10"

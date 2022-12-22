@@ -1,4 +1,4 @@
-name: Clojure CI
+name: Main
 
 on:
   push:
@@ -17,3 +17,10 @@ jobs:
       run: lein deps
     - name: Run tests
       run: lein test
+    - name: Build
+      run: lein uberjar
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: target/*.jar
