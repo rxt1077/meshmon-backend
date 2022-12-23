@@ -32,3 +32,10 @@ This project uses [pronto](https://github.com/AppsFlyer/pronto) to handle protob
 It also used [lein-protodeps](https://github.com/AppsFlyer/) to automatically pull and compile protobufs from [the Meshtastic Protobuf Definitions repo](https://github.com/meshtastic/protobufs).
 
 If you need to update the protobufs, running `lein protodeps generate` should suffice.
+
+## Of Camels, Snakes, and Kebabs
+
+Every effort has been made to use the correct label style for how something is stored/used.
+If it is being used in a Clojure program it is presented in kebab case.
+If it is being stored in the DB column it uses snake case.
+If it is being stored or exchanged as JSON it uses camelCase.
