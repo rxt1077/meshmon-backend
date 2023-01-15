@@ -8435,6 +8435,18 @@ public final class ConfigProtos {
 
       /**
        * <pre>
+       * If true, duty cycle limits will be exceeded and thus you're possibly not following 
+       * the local regulations if you're not a HAM.
+       * Has no effect if the duty cycle of the used region is 100%. 
+       * </pre>
+       *
+       * <code>bool override_duty_cycle = 12;</code>
+       * @return The overrideDutyCycle.
+       */
+      boolean getOverrideDutyCycle();
+
+      /**
+       * <pre>
        * For testing it is useful sometimes to force a node to never listen to
        * particular other nodes (simulating radio out of range). All nodenums listed
        * in ignore_incoming will have packets they send droped on receive (by router.cpp)
@@ -9270,6 +9282,23 @@ public final class ConfigProtos {
         return channelNum_;
       }
 
+      public static final int OVERRIDE_DUTY_CYCLE_FIELD_NUMBER = 12;
+      private boolean overrideDutyCycle_ = false;
+      /**
+       * <pre>
+       * If true, duty cycle limits will be exceeded and thus you're possibly not following 
+       * the local regulations if you're not a HAM.
+       * Has no effect if the duty cycle of the used region is 100%. 
+       * </pre>
+       *
+       * <code>bool override_duty_cycle = 12;</code>
+       * @return The overrideDutyCycle.
+       */
+      @java.lang.Override
+      public boolean getOverrideDutyCycle() {
+        return overrideDutyCycle_;
+      }
+
       public static final int IGNORE_INCOMING_FIELD_NUMBER = 103;
       @SuppressWarnings("serial")
       private com.google.protobuf.Internal.IntList ignoreIncoming_;
@@ -9365,6 +9394,9 @@ public final class ConfigProtos {
         if (channelNum_ != 0) {
           output.writeUInt32(11, channelNum_);
         }
+        if (overrideDutyCycle_ != false) {
+          output.writeBool(12, overrideDutyCycle_);
+        }
         if (getIgnoreIncomingList().size() > 0) {
           output.writeUInt32NoTag(826);
           output.writeUInt32NoTag(ignoreIncomingMemoizedSerializedSize);
@@ -9425,6 +9457,10 @@ public final class ConfigProtos {
           size += com.google.protobuf.CodedOutputStream
             .computeUInt32Size(11, channelNum_);
         }
+        if (overrideDutyCycle_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(12, overrideDutyCycle_);
+        }
         {
           int dataSize = 0;
           for (int i = 0; i < ignoreIncoming_.size(); i++) {
@@ -9475,6 +9511,8 @@ public final class ConfigProtos {
             != other.getTxPower()) return false;
         if (getChannelNum()
             != other.getChannelNum()) return false;
+        if (getOverrideDutyCycle()
+            != other.getOverrideDutyCycle()) return false;
         if (!getIgnoreIncomingList()
             .equals(other.getIgnoreIncomingList())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -9513,6 +9551,9 @@ public final class ConfigProtos {
         hash = (53 * hash) + getTxPower();
         hash = (37 * hash) + CHANNEL_NUM_FIELD_NUMBER;
         hash = (53 * hash) + getChannelNum();
+        hash = (37 * hash) + OVERRIDE_DUTY_CYCLE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getOverrideDutyCycle());
         if (getIgnoreIncomingCount() > 0) {
           hash = (37 * hash) + IGNORE_INCOMING_FIELD_NUMBER;
           hash = (53 * hash) + getIgnoreIncomingList().hashCode();
@@ -9661,6 +9702,7 @@ public final class ConfigProtos {
           txEnabled_ = false;
           txPower_ = 0;
           channelNum_ = 0;
+          overrideDutyCycle_ = false;
           ignoreIncoming_ = emptyIntList();
           return this;
         }
@@ -9695,9 +9737,9 @@ public final class ConfigProtos {
         }
 
         private void buildPartialRepeatedFields(com.geeksville.mesh.ConfigProtos.Config.LoRaConfig result) {
-          if (((bitField0_ & 0x00000800) != 0)) {
+          if (((bitField0_ & 0x00001000) != 0)) {
             ignoreIncoming_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00000800);
+            bitField0_ = (bitField0_ & ~0x00001000);
           }
           result.ignoreIncoming_ = ignoreIncoming_;
         }
@@ -9736,6 +9778,9 @@ public final class ConfigProtos {
           }
           if (((from_bitField0_ & 0x00000400) != 0)) {
             result.channelNum_ = channelNum_;
+          }
+          if (((from_bitField0_ & 0x00000800) != 0)) {
+            result.overrideDutyCycle_ = overrideDutyCycle_;
           }
         }
 
@@ -9816,10 +9861,13 @@ public final class ConfigProtos {
           if (other.getChannelNum() != 0) {
             setChannelNum(other.getChannelNum());
           }
+          if (other.getOverrideDutyCycle() != false) {
+            setOverrideDutyCycle(other.getOverrideDutyCycle());
+          }
           if (!other.ignoreIncoming_.isEmpty()) {
             if (ignoreIncoming_.isEmpty()) {
               ignoreIncoming_ = other.ignoreIncoming_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
             } else {
               ensureIgnoreIncomingIsMutable();
               ignoreIncoming_.addAll(other.ignoreIncoming_);
@@ -9907,6 +9955,11 @@ public final class ConfigProtos {
                   bitField0_ |= 0x00000400;
                   break;
                 } // case 88
+                case 96: {
+                  overrideDutyCycle_ = input.readBool();
+                  bitField0_ |= 0x00000800;
+                  break;
+                } // case 96
                 case 824: {
                   int v = input.readUInt32();
                   ensureIgnoreIncomingIsMutable();
@@ -10556,11 +10609,61 @@ public final class ConfigProtos {
           return this;
         }
 
+        private boolean overrideDutyCycle_ ;
+        /**
+         * <pre>
+         * If true, duty cycle limits will be exceeded and thus you're possibly not following 
+         * the local regulations if you're not a HAM.
+         * Has no effect if the duty cycle of the used region is 100%. 
+         * </pre>
+         *
+         * <code>bool override_duty_cycle = 12;</code>
+         * @return The overrideDutyCycle.
+         */
+        @java.lang.Override
+        public boolean getOverrideDutyCycle() {
+          return overrideDutyCycle_;
+        }
+        /**
+         * <pre>
+         * If true, duty cycle limits will be exceeded and thus you're possibly not following 
+         * the local regulations if you're not a HAM.
+         * Has no effect if the duty cycle of the used region is 100%. 
+         * </pre>
+         *
+         * <code>bool override_duty_cycle = 12;</code>
+         * @param value The overrideDutyCycle to set.
+         * @return This builder for chaining.
+         */
+        public Builder setOverrideDutyCycle(boolean value) {
+          
+          overrideDutyCycle_ = value;
+          bitField0_ |= 0x00000800;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * If true, duty cycle limits will be exceeded and thus you're possibly not following 
+         * the local regulations if you're not a HAM.
+         * Has no effect if the duty cycle of the used region is 100%. 
+         * </pre>
+         *
+         * <code>bool override_duty_cycle = 12;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearOverrideDutyCycle() {
+          bitField0_ = (bitField0_ & ~0x00000800);
+          overrideDutyCycle_ = false;
+          onChanged();
+          return this;
+        }
+
         private com.google.protobuf.Internal.IntList ignoreIncoming_ = emptyIntList();
         private void ensureIgnoreIncomingIsMutable() {
-          if (!((bitField0_ & 0x00000800) != 0)) {
+          if (!((bitField0_ & 0x00001000) != 0)) {
             ignoreIncoming_ = mutableCopy(ignoreIncoming_);
-            bitField0_ |= 0x00000800;
+            bitField0_ |= 0x00001000;
           }
         }
         /**
@@ -10575,7 +10678,7 @@ public final class ConfigProtos {
          */
         public java.util.List<java.lang.Integer>
             getIgnoreIncomingList() {
-          return ((bitField0_ & 0x00000800) != 0) ?
+          return ((bitField0_ & 0x00001000) != 0) ?
                    java.util.Collections.unmodifiableList(ignoreIncoming_) : ignoreIncoming_;
         }
         /**
@@ -10674,7 +10777,7 @@ public final class ConfigProtos {
          */
         public Builder clearIgnoreIncoming() {
           ignoreIncoming_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
           onChanged();
           return this;
         }
@@ -13563,7 +13666,7 @@ public final class ConfigProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014config.proto\"\310\025\n\006Config\022&\n\006device\030\001 \001(" +
+      "\n\014config.proto\"\345\025\n\006Config\022&\n\006device\030\001 \001(" +
       "\0132\024.Config.DeviceConfigH\000\022*\n\010position\030\002 " +
       "\001(\0132\026.Config.PositionConfigH\000\022$\n\005power\030\003" +
       " \001(\0132\023.Config.PowerConfigH\000\022(\n\007network\030\004" +
@@ -13612,7 +13715,7 @@ public final class ConfigProtos {
       "S\020\001\022\007\n\003UTM\020\002\022\010\n\004MGRS\020\003\022\007\n\003OLC\020\004\022\010\n\004OSGR\020" +
       "\005\"(\n\014DisplayUnits\022\n\n\006METRIC\020\000\022\014\n\010IMPERIA" +
       "L\020\001\"<\n\010OledType\022\r\n\tOLED_AUTO\020\000\022\020\n\014OLED_S" +
-      "SD1306\020\001\022\017\n\013OLED_SH1106\020\002\032\335\004\n\nLoRaConfig" +
+      "SD1306\020\001\022\017\n\013OLED_SH1106\020\002\032\372\004\n\nLoRaConfig" +
       "\022\022\n\nuse_preset\030\001 \001(\010\0224\n\014modem_preset\030\002 \001" +
       "(\0162\036.Config.LoRaConfig.ModemPreset\022\021\n\tba" +
       "ndwidth\030\003 \001(\r\022\025\n\rspread_factor\030\004 \001(\r\022\023\n\013" +
@@ -13620,21 +13723,22 @@ public final class ConfigProtos {
       "\001(\002\022-\n\006region\030\007 \001(\0162\035.Config.LoRaConfig." +
       "RegionCode\022\021\n\thop_limit\030\010 \001(\r\022\022\n\ntx_enab" +
       "led\030\t \001(\010\022\020\n\010tx_power\030\n \001(\005\022\023\n\013channel_n" +
-      "um\030\013 \001(\r\022\027\n\017ignore_incoming\030g \003(\r\"\221\001\n\nRe" +
-      "gionCode\022\t\n\005UNSET\020\000\022\006\n\002US\020\001\022\n\n\006EU_433\020\002\022" +
-      "\n\n\006EU_868\020\003\022\006\n\002CN\020\004\022\006\n\002JP\020\005\022\007\n\003ANZ\020\006\022\006\n\002" +
-      "KR\020\007\022\006\n\002TW\020\010\022\006\n\002RU\020\t\022\006\n\002IN\020\n\022\n\n\006NZ_865\020\013" +
-      "\022\006\n\002TH\020\014\022\013\n\007LORA_24\020\r\"\201\001\n\013ModemPreset\022\r\n" +
-      "\tLONG_FAST\020\000\022\r\n\tLONG_SLOW\020\001\022\022\n\016VERY_LONG" +
-      "_SLOW\020\002\022\017\n\013MEDIUM_SLOW\020\003\022\017\n\013MEDIUM_FAST\020" +
-      "\004\022\016\n\nSHORT_SLOW\020\005\022\016\n\nSHORT_FAST\020\006\032\242\001\n\017Bl" +
-      "uetoothConfig\022\017\n\007enabled\030\001 \001(\010\0221\n\004mode\030\002" +
-      " \001(\0162#.Config.BluetoothConfig.PairingMod" +
-      "e\022\021\n\tfixed_pin\030\003 \001(\r\"8\n\013PairingMode\022\016\n\nR" +
-      "ANDOM_PIN\020\000\022\r\n\tFIXED_PIN\020\001\022\n\n\006NO_PIN\020\002B\021" +
-      "\n\017payload_variantBI\n\023com.geeksville.mesh" +
-      "B\014ConfigProtosH\003Z\"github.com/meshtastic/" +
-      "go/generatedb\006proto3"
+      "um\030\013 \001(\r\022\033\n\023override_duty_cycle\030\014 \001(\010\022\027\n" +
+      "\017ignore_incoming\030g \003(\r\"\221\001\n\nRegionCode\022\t\n" +
+      "\005UNSET\020\000\022\006\n\002US\020\001\022\n\n\006EU_433\020\002\022\n\n\006EU_868\020\003" +
+      "\022\006\n\002CN\020\004\022\006\n\002JP\020\005\022\007\n\003ANZ\020\006\022\006\n\002KR\020\007\022\006\n\002TW\020" +
+      "\010\022\006\n\002RU\020\t\022\006\n\002IN\020\n\022\n\n\006NZ_865\020\013\022\006\n\002TH\020\014\022\013\n" +
+      "\007LORA_24\020\r\"\201\001\n\013ModemPreset\022\r\n\tLONG_FAST\020" +
+      "\000\022\r\n\tLONG_SLOW\020\001\022\022\n\016VERY_LONG_SLOW\020\002\022\017\n\013" +
+      "MEDIUM_SLOW\020\003\022\017\n\013MEDIUM_FAST\020\004\022\016\n\nSHORT_" +
+      "SLOW\020\005\022\016\n\nSHORT_FAST\020\006\032\242\001\n\017BluetoothConf" +
+      "ig\022\017\n\007enabled\030\001 \001(\010\0221\n\004mode\030\002 \001(\0162#.Conf" +
+      "ig.BluetoothConfig.PairingMode\022\021\n\tfixed_" +
+      "pin\030\003 \001(\r\"8\n\013PairingMode\022\016\n\nRANDOM_PIN\020\000" +
+      "\022\r\n\tFIXED_PIN\020\001\022\n\n\006NO_PIN\020\002B\021\n\017payload_v" +
+      "ariantB`\n\023com.geeksville.meshB\014ConfigPro" +
+      "tosH\003Z\"github.com/meshtastic/go/generate" +
+      "d\252\002\024Meshtastic.Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -13687,7 +13791,7 @@ public final class ConfigProtos {
     internal_static_Config_LoRaConfig_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Config_LoRaConfig_descriptor,
-        new java.lang.String[] { "UsePreset", "ModemPreset", "Bandwidth", "SpreadFactor", "CodingRate", "FrequencyOffset", "Region", "HopLimit", "TxEnabled", "TxPower", "ChannelNum", "IgnoreIncoming", });
+        new java.lang.String[] { "UsePreset", "ModemPreset", "Bandwidth", "SpreadFactor", "CodingRate", "FrequencyOffset", "Region", "HopLimit", "TxEnabled", "TxPower", "ChannelNum", "OverrideDutyCycle", "IgnoreIncoming", });
     internal_static_Config_BluetoothConfig_descriptor =
       internal_static_Config_descriptor.getNestedTypes().get(6);
     internal_static_Config_BluetoothConfig_fieldAccessorTable = new

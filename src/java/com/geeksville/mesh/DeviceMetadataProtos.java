@@ -1095,9 +1095,10 @@ public final class DeviceMetadataProtos {
       "ta\022\030\n\020firmware_version\030\001 \001(\t\022\034\n\024device_s" +
       "tate_version\030\002 \001(\r\022\023\n\013canShutdown\030\003 \001(\010\022" +
       "\017\n\007hasWifi\030\004 \001(\010\022\024\n\014hasBluetooth\030\005 \001(\010\022\023" +
-      "\n\013hasEthernet\030\006 \001(\010BQ\n\023com.geeksville.me" +
+      "\n\013hasEthernet\030\006 \001(\010Bh\n\023com.geeksville.me" +
       "shB\024DeviceMetadataProtosH\003Z\"github.com/m" +
-      "eshtastic/go/generatedb\006proto3"
+      "eshtastic/go/generated\252\002\024Meshtastic.Prot" +
+      "obufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

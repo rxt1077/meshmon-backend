@@ -25,7 +25,7 @@ public final class ChannelProtos {
      *
      * <code>uint32 channel_num = 1 [deprecated = true];</code>
      * @deprecated ChannelSettings.channel_num is deprecated.
-     *     See channel.proto;l=35
+     *     See channel.proto;l=36
      * @return The channelNum.
      */
     @java.lang.Deprecated int getChannelNum();
@@ -196,7 +196,7 @@ public final class ChannelProtos {
      *
      * <code>uint32 channel_num = 1 [deprecated = true];</code>
      * @deprecated ChannelSettings.channel_num is deprecated.
-     *     See channel.proto;l=35
+     *     See channel.proto;l=36
      * @return The channelNum.
      */
     @java.lang.Override
@@ -815,7 +815,7 @@ public final class ChannelProtos {
        *
        * <code>uint32 channel_num = 1 [deprecated = true];</code>
        * @deprecated ChannelSettings.channel_num is deprecated.
-       *     See channel.proto;l=35
+       *     See channel.proto;l=36
        * @return The channelNum.
        */
       @java.lang.Override
@@ -2371,9 +2371,9 @@ public final class ChannelProtos {
       "l\022\r\n\005index\030\001 \001(\005\022\"\n\010settings\030\002 \001(\0132\020.Cha" +
       "nnelSettings\022\033\n\004role\030\003 \001(\0162\r.Channel.Rol" +
       "e\"0\n\004Role\022\014\n\010DISABLED\020\000\022\013\n\007PRIMARY\020\001\022\r\n\t" +
-      "SECONDARY\020\002BJ\n\023com.geeksville.meshB\rChan" +
+      "SECONDARY\020\002Ba\n\023com.geeksville.meshB\rChan" +
       "nelProtosH\003Z\"github.com/meshtastic/go/ge" +
-      "neratedb\006proto3"
+      "nerated\252\002\024Meshtastic.Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

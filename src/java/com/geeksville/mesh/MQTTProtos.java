@@ -1087,9 +1087,10 @@ public final class MQTTProtos {
     java.lang.String[] descriptorData = {
       "\n\nmqtt.proto\032\nmesh.proto\"V\n\017ServiceEnvel" +
       "ope\022\033\n\006packet\030\001 \001(\0132\013.MeshPacket\022\022\n\nchan" +
-      "nel_id\030\002 \001(\t\022\022\n\ngateway_id\030\003 \001(\tBG\n\023com." +
+      "nel_id\030\002 \001(\t\022\022\n\ngateway_id\030\003 \001(\tB^\n\023com." +
       "geeksville.meshB\nMQTTProtosH\003Z\"github.co" +
-      "m/meshtastic/go/generatedb\006proto3"
+      "m/meshtastic/go/generated\252\002\024Meshtastic.P" +
+      "rotobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

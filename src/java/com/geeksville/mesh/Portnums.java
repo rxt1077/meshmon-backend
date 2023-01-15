@@ -203,6 +203,15 @@ public final class Portnums {
     SIMULATOR_APP(69),
     /**
      * <pre>
+     * Provides a traceroute functionality to show the route a packet towards
+     * a certain destination would take on the mesh.
+     * </pre>
+     *
+     * <code>TRACEROUTE_APP = 70;</code>
+     */
+    TRACEROUTE_APP(70),
+    /**
+     * <pre>
      * Private applications should use portnums &gt;= 256.
      * To simplify initial development and testing you can use "PRIVATE_APP"
      * in your code without needing to rebuild protobuf files (via [regen-protos.sh](https://github.com/meshtastic/firmware/blob/master/bin/regen-protos.sh))
@@ -399,6 +408,15 @@ public final class Portnums {
     public static final int SIMULATOR_APP_VALUE = 69;
     /**
      * <pre>
+     * Provides a traceroute functionality to show the route a packet towards
+     * a certain destination would take on the mesh.
+     * </pre>
+     *
+     * <code>TRACEROUTE_APP = 70;</code>
+     */
+    public static final int TRACEROUTE_APP_VALUE = 70;
+    /**
+     * <pre>
      * Private applications should use portnums &gt;= 256.
      * To simplify initial development and testing you can use "PRIVATE_APP"
      * in your code without needing to rebuild protobuf files (via [regen-protos.sh](https://github.com/meshtastic/firmware/blob/master/bin/regen-protos.sh))
@@ -467,6 +485,7 @@ public final class Portnums {
         case 67: return TELEMETRY_APP;
         case 68: return ZPS_APP;
         case 69: return SIMULATOR_APP;
+        case 70: return TRACEROUTE_APP;
         case 256: return PRIVATE_APP;
         case 257: return ATAK_FORWARDER;
         case 511: return MAX;
@@ -535,7 +554,7 @@ public final class Portnums {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016portnums.proto*\220\003\n\007PortNum\022\017\n\013UNKNOWN_" +
+      "\n\016portnums.proto*\244\003\n\007PortNum\022\017\n\013UNKNOWN_" +
       "APP\020\000\022\024\n\020TEXT_MESSAGE_APP\020\001\022\027\n\023REMOTE_HA" +
       "RDWARE_APP\020\002\022\020\n\014POSITION_APP\020\003\022\020\n\014NODEIN" +
       "FO_APP\020\004\022\017\n\013ROUTING_APP\020\005\022\r\n\tADMIN_APP\020\006" +
@@ -544,10 +563,11 @@ public final class Portnums {
       " \022\021\n\rIP_TUNNEL_APP\020!\022\016\n\nSERIAL_APP\020@\022\025\n\021" +
       "STORE_FORWARD_APP\020A\022\022\n\016RANGE_TEST_APP\020B\022" +
       "\021\n\rTELEMETRY_APP\020C\022\013\n\007ZPS_APP\020D\022\021\n\rSIMUL" +
-      "ATOR_APP\020E\022\020\n\013PRIVATE_APP\020\200\002\022\023\n\016ATAK_FOR" +
-      "WARDER\020\201\002\022\010\n\003MAX\020\377\003BE\n\023com.geeksville.me" +
-      "shB\010PortnumsH\003Z\"github.com/meshtastic/go" +
-      "/generatedb\006proto3"
+      "ATOR_APP\020E\022\022\n\016TRACEROUTE_APP\020F\022\020\n\013PRIVAT" +
+      "E_APP\020\200\002\022\023\n\016ATAK_FORWARDER\020\201\002\022\010\n\003MAX\020\377\003B" +
+      "\\\n\023com.geeksville.meshB\010PortnumsH\003Z\"gith" +
+      "ub.com/meshtastic/go/generated\252\002\024Meshtas" +
+      "tic.Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

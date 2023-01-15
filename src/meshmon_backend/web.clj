@@ -3,27 +3,28 @@
             [compojure.route :as route]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [meshmon-backend.db :as db]))
+            [taoensso.timbre :as timbre]
+            [ring.logger :as logger]
+            [meshmon-backend.db :as db]
+            [meshmon-backend.pb :as pb]
+            [clojure.data.json :as json]))
 
-(def base-query "SELECT packet_from, packet_to, decoded, id, rx_time, rx_snr,
-hop_limit, rx_rssi, channel, want_ack, priority, delayed, port, rowid FROM
-packets ")
+(defn response [rows]
+  "Returns the rows as a protobuf response"
+  {:status 200
+   :headers {"Content-Type" "application/x-protobuf"}
+   :body (pb/proto-map->bytes (pb/clj-map->response {:rows rows}))})
 
 (defn app-routes [ds static]
   (routes
-    ;; all packets
-    (GET "/packets" [] (db/query->edn-response ds [(str base-query ";")]))
-    ;; all packets after a certain rowid
+    (GET "/packets" []
+         (response (db/get-all ds)))
     (GET "/packets/after/:id{[0-9]+}" [id]
-         (db/query->edn-response ds [(str base-query "WHERE rowid > ?;") id]))
-    ;; one packet (still in a list) after a certain rowid
+         (response (db/get-after ds id)))
     (GET "/packets/one-after/:id{[0-9]+}" [id]
-         (db/query->edn-response
-           ds [(str base-query "WHERE rowid > ? LIMIT 1;") id]))
-    ;; packets with a range of rx_times (inclusive)
+         (response (db/get-one-after ds id)))
     (GET "/packets/range/:start{[0-9]+}-:end{[0-9]+}" [start end]
-         (db/query->edn-response ds
-           [(str base-query "WHERE rx_time >= ? AND rx_time <= ?;") start end]))
+         (response (db/get-range ds start end)))
     (route/files "/" {:root static})
     (route/not-found "Not Found")))
 
@@ -32,4 +33,7 @@ packets ")
   (-> (app-routes ds static)
       (wrap-defaults site-defaults)
       (wrap-cors :access-control-allow-origin [#".*"]
-                 :access-control-allow-methods [:get])))
+                 :access-control-allow-methods [:get])
+      (logger/wrap-log-response
+        {:log-fn (fn [{:keys [level throwable message]}]
+                   (timbre/log level throwable message))})))

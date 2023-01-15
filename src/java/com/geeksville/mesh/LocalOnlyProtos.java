@@ -4911,9 +4911,10 @@ public final class LocalOnlyProtos {
       ".TelemetryConfig\0229\n\016canned_message\030\007 \001(\013" +
       "2!.ModuleConfig.CannedMessageConfig\022(\n\005a" +
       "udio\030\t \001(\0132\031.ModuleConfig.AudioConfig\022\017\n" +
-      "\007version\030\010 \001(\rBL\n\023com.geeksville.meshB\017L" +
+      "\007version\030\010 \001(\rBc\n\023com.geeksville.meshB\017L" +
       "ocalOnlyProtosH\003Z\"github.com/meshtastic/" +
-      "go/generatedb\006proto3"
+      "go/generated\252\002\024Meshtastic.Protobufsb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

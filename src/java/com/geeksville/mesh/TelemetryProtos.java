@@ -132,6 +132,15 @@ public final class TelemetryProtos {
      * <code>QMC5883L = 11;</code>
      */
     QMC5883L(11),
+    /**
+     * <pre>
+     *
+     * High accuracy temperature and humidity
+     * </pre>
+     *
+     * <code>SHT31 = 12;</code>
+     */
+    SHT31(12),
     UNRECOGNIZED(-1),
     ;
 
@@ -243,6 +252,15 @@ public final class TelemetryProtos {
      * <code>QMC5883L = 11;</code>
      */
     public static final int QMC5883L_VALUE = 11;
+    /**
+     * <pre>
+     *
+     * High accuracy temperature and humidity
+     * </pre>
+     *
+     * <code>SHT31 = 12;</code>
+     */
+    public static final int SHT31_VALUE = 12;
 
 
     public final int getNumber() {
@@ -281,6 +299,7 @@ public final class TelemetryProtos {
         case 9: return QMC6310;
         case 10: return QMI8658;
         case 11: return QMC5883L;
+        case 12: return SHT31;
         default: return null;
       }
     }
@@ -3399,13 +3418,14 @@ public final class TelemetryProtos {
       "(\002\"\202\001\n\tTelemetry\022\014\n\004time\030\001 \001(\007\022(\n\016device" +
       "_metrics\030\002 \001(\0132\016.DeviceMetricsH\000\0222\n\023envi" +
       "ronment_metrics\030\003 \001(\0132\023.EnvironmentMetri" +
-      "csH\000B\t\n\007variant*\256\001\n\023TelemetrySensorType\022" +
+      "csH\000B\t\n\007variant*\271\001\n\023TelemetrySensorType\022" +
       "\020\n\014SENSOR_UNSET\020\000\022\n\n\006BME280\020\001\022\n\n\006BME680\020" +
       "\002\022\013\n\007MCP9808\020\003\022\n\n\006INA260\020\004\022\n\n\006INA219\020\005\022\n" +
       "\n\006BMP280\020\006\022\t\n\005SHTC3\020\007\022\t\n\005LPS22\020\010\022\013\n\007QMC6" +
-      "310\020\t\022\013\n\007QMI8658\020\n\022\014\n\010QMC5883L\020\013BL\n\023com." +
-      "geeksville.meshB\017TelemetryProtosH\003Z\"gith" +
-      "ub.com/meshtastic/go/generatedb\006proto3"
+      "310\020\t\022\013\n\007QMI8658\020\n\022\014\n\010QMC5883L\020\013\022\t\n\005SHT3" +
+      "1\020\014Bc\n\023com.geeksville.meshB\017TelemetryPro" +
+      "tosH\003Z\"github.com/meshtastic/go/generate" +
+      "d\252\002\024Meshtastic.Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

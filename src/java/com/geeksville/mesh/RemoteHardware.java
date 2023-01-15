@@ -996,9 +996,10 @@ public final class RemoteHardware {
       "\022\021\n\tgpio_mask\030\002 \001(\004\022\022\n\ngpio_value\030\003 \001(\004\"" +
       "l\n\004Type\022\t\n\005UNSET\020\000\022\017\n\013WRITE_GPIOS\020\001\022\017\n\013W" +
       "ATCH_GPIOS\020\002\022\021\n\rGPIOS_CHANGED\020\003\022\016\n\nREAD_" +
-      "GPIOS\020\004\022\024\n\020READ_GPIOS_REPLY\020\005BK\n\023com.gee" +
+      "GPIOS\020\004\022\024\n\020READ_GPIOS_REPLY\020\005Bb\n\023com.gee" +
       "ksville.meshB\016RemoteHardwareH\003Z\"github.c" +
-      "om/meshtastic/go/generatedb\006proto3"
+      "om/meshtastic/go/generated\252\002\024Meshtastic." +
+      "Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

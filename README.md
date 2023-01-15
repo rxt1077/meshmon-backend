@@ -37,5 +37,5 @@ If you need to update the protobufs, running `lein protodeps generate` should su
 
 Every effort has been made to use the correct label style for how something is stored/used.
 If it is being used in a Clojure program it is presented in kebab case.
-If it is being stored in the DB column it uses snake case.
+If it is being stored in a DB column it uses snake case.
 If it is being stored or exchanged as JSON it uses camelCase.

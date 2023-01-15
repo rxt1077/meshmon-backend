@@ -1607,30 +1607,10 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * ADC where Microphone is connected
-       * </pre>
-       *
-       * <code>uint32 mic_chan = 2;</code>
-       * @return The micChan.
-       */
-      int getMicChan();
-
-      /**
-       * <pre>
-       * DAC where Speaker is connected
-       * </pre>
-       *
-       * <code>uint32 amp_pin = 3;</code>
-       * @return The ampPin.
-       */
-      int getAmpPin();
-
-      /**
-       * <pre>
        * PTT Pin
        * </pre>
        *
-       * <code>uint32 ptt_pin = 4;</code>
+       * <code>uint32 ptt_pin = 2;</code>
        * @return The pttPin.
        */
       int getPttPin();
@@ -1640,7 +1620,7 @@ public final class ModuleConfigProtos {
        * The audio sample rate to use for codec2
        * </pre>
        *
-       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
        * @return The enum numeric value on the wire for bitrate.
        */
       int getBitrateValue();
@@ -1649,10 +1629,50 @@ public final class ModuleConfigProtos {
        * The audio sample rate to use for codec2
        * </pre>
        *
-       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
        * @return The bitrate.
        */
       com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud getBitrate();
+
+      /**
+       * <pre>
+       * I2S Word Select
+       * </pre>
+       *
+       * <code>uint32 i2s_ws = 4;</code>
+       * @return The i2sWs.
+       */
+      int getI2SWs();
+
+      /**
+       * <pre>
+       * I2S Data IN
+       * </pre>
+       *
+       * <code>uint32 i2s_sd = 5;</code>
+       * @return The i2sSd.
+       */
+      int getI2SSd();
+
+      /**
+       * <pre>
+       * I2S Data OUT
+       * </pre>
+       *
+       * <code>uint32 i2s_din = 6;</code>
+       * @return The i2sDin.
+       */
+      int getI2SDin();
+
+      /**
+       * <pre>
+       * I2S Clock
+       * </pre>
+       *
+       * <code>uint32 i2s_sck = 7;</code>
+       * @return The i2sSck.
+       */
+      int getI2SSck();
     }
     /**
      * <pre>
@@ -1889,44 +1909,14 @@ public final class ModuleConfigProtos {
         return codec2Enabled_;
       }
 
-      public static final int MIC_CHAN_FIELD_NUMBER = 2;
-      private int micChan_ = 0;
-      /**
-       * <pre>
-       * ADC where Microphone is connected
-       * </pre>
-       *
-       * <code>uint32 mic_chan = 2;</code>
-       * @return The micChan.
-       */
-      @java.lang.Override
-      public int getMicChan() {
-        return micChan_;
-      }
-
-      public static final int AMP_PIN_FIELD_NUMBER = 3;
-      private int ampPin_ = 0;
-      /**
-       * <pre>
-       * DAC where Speaker is connected
-       * </pre>
-       *
-       * <code>uint32 amp_pin = 3;</code>
-       * @return The ampPin.
-       */
-      @java.lang.Override
-      public int getAmpPin() {
-        return ampPin_;
-      }
-
-      public static final int PTT_PIN_FIELD_NUMBER = 4;
+      public static final int PTT_PIN_FIELD_NUMBER = 2;
       private int pttPin_ = 0;
       /**
        * <pre>
        * PTT Pin
        * </pre>
        *
-       * <code>uint32 ptt_pin = 4;</code>
+       * <code>uint32 ptt_pin = 2;</code>
        * @return The pttPin.
        */
       @java.lang.Override
@@ -1934,14 +1924,14 @@ public final class ModuleConfigProtos {
         return pttPin_;
       }
 
-      public static final int BITRATE_FIELD_NUMBER = 5;
+      public static final int BITRATE_FIELD_NUMBER = 3;
       private int bitrate_ = 0;
       /**
        * <pre>
        * The audio sample rate to use for codec2
        * </pre>
        *
-       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
        * @return The enum numeric value on the wire for bitrate.
        */
       @java.lang.Override public int getBitrateValue() {
@@ -1952,12 +1942,72 @@ public final class ModuleConfigProtos {
        * The audio sample rate to use for codec2
        * </pre>
        *
-       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+       * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
        * @return The bitrate.
        */
       @java.lang.Override public com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud getBitrate() {
         com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud result = com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud.forNumber(bitrate_);
         return result == null ? com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud.UNRECOGNIZED : result;
+      }
+
+      public static final int I2S_WS_FIELD_NUMBER = 4;
+      private int i2SWs_ = 0;
+      /**
+       * <pre>
+       * I2S Word Select
+       * </pre>
+       *
+       * <code>uint32 i2s_ws = 4;</code>
+       * @return The i2sWs.
+       */
+      @java.lang.Override
+      public int getI2SWs() {
+        return i2SWs_;
+      }
+
+      public static final int I2S_SD_FIELD_NUMBER = 5;
+      private int i2SSd_ = 0;
+      /**
+       * <pre>
+       * I2S Data IN
+       * </pre>
+       *
+       * <code>uint32 i2s_sd = 5;</code>
+       * @return The i2sSd.
+       */
+      @java.lang.Override
+      public int getI2SSd() {
+        return i2SSd_;
+      }
+
+      public static final int I2S_DIN_FIELD_NUMBER = 6;
+      private int i2SDin_ = 0;
+      /**
+       * <pre>
+       * I2S Data OUT
+       * </pre>
+       *
+       * <code>uint32 i2s_din = 6;</code>
+       * @return The i2sDin.
+       */
+      @java.lang.Override
+      public int getI2SDin() {
+        return i2SDin_;
+      }
+
+      public static final int I2S_SCK_FIELD_NUMBER = 7;
+      private int i2SSck_ = 0;
+      /**
+       * <pre>
+       * I2S Clock
+       * </pre>
+       *
+       * <code>uint32 i2s_sck = 7;</code>
+       * @return The i2sSck.
+       */
+      @java.lang.Override
+      public int getI2SSck() {
+        return i2SSck_;
       }
 
       private byte memoizedIsInitialized = -1;
@@ -1977,17 +2027,23 @@ public final class ModuleConfigProtos {
         if (codec2Enabled_ != false) {
           output.writeBool(1, codec2Enabled_);
         }
-        if (micChan_ != 0) {
-          output.writeUInt32(2, micChan_);
-        }
-        if (ampPin_ != 0) {
-          output.writeUInt32(3, ampPin_);
-        }
         if (pttPin_ != 0) {
-          output.writeUInt32(4, pttPin_);
+          output.writeUInt32(2, pttPin_);
         }
         if (bitrate_ != com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud.CODEC2_DEFAULT.getNumber()) {
-          output.writeEnum(5, bitrate_);
+          output.writeEnum(3, bitrate_);
+        }
+        if (i2SWs_ != 0) {
+          output.writeUInt32(4, i2SWs_);
+        }
+        if (i2SSd_ != 0) {
+          output.writeUInt32(5, i2SSd_);
+        }
+        if (i2SDin_ != 0) {
+          output.writeUInt32(6, i2SDin_);
+        }
+        if (i2SSck_ != 0) {
+          output.writeUInt32(7, i2SSck_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -2002,21 +2058,29 @@ public final class ModuleConfigProtos {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(1, codec2Enabled_);
         }
-        if (micChan_ != 0) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(2, micChan_);
-        }
-        if (ampPin_ != 0) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(3, ampPin_);
-        }
         if (pttPin_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(4, pttPin_);
+            .computeUInt32Size(2, pttPin_);
         }
         if (bitrate_ != com.geeksville.mesh.ModuleConfigProtos.ModuleConfig.AudioConfig.Audio_Baud.CODEC2_DEFAULT.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(5, bitrate_);
+            .computeEnumSize(3, bitrate_);
+        }
+        if (i2SWs_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(4, i2SWs_);
+        }
+        if (i2SSd_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(5, i2SSd_);
+        }
+        if (i2SDin_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(6, i2SDin_);
+        }
+        if (i2SSck_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(7, i2SSck_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -2035,13 +2099,17 @@ public final class ModuleConfigProtos {
 
         if (getCodec2Enabled()
             != other.getCodec2Enabled()) return false;
-        if (getMicChan()
-            != other.getMicChan()) return false;
-        if (getAmpPin()
-            != other.getAmpPin()) return false;
         if (getPttPin()
             != other.getPttPin()) return false;
         if (bitrate_ != other.bitrate_) return false;
+        if (getI2SWs()
+            != other.getI2SWs()) return false;
+        if (getI2SSd()
+            != other.getI2SSd()) return false;
+        if (getI2SDin()
+            != other.getI2SDin()) return false;
+        if (getI2SSck()
+            != other.getI2SSck()) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
       }
@@ -2056,14 +2124,18 @@ public final class ModuleConfigProtos {
         hash = (37 * hash) + CODEC2_ENABLED_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getCodec2Enabled());
-        hash = (37 * hash) + MIC_CHAN_FIELD_NUMBER;
-        hash = (53 * hash) + getMicChan();
-        hash = (37 * hash) + AMP_PIN_FIELD_NUMBER;
-        hash = (53 * hash) + getAmpPin();
         hash = (37 * hash) + PTT_PIN_FIELD_NUMBER;
         hash = (53 * hash) + getPttPin();
         hash = (37 * hash) + BITRATE_FIELD_NUMBER;
         hash = (53 * hash) + bitrate_;
+        hash = (37 * hash) + I2S_WS_FIELD_NUMBER;
+        hash = (53 * hash) + getI2SWs();
+        hash = (37 * hash) + I2S_SD_FIELD_NUMBER;
+        hash = (53 * hash) + getI2SSd();
+        hash = (37 * hash) + I2S_DIN_FIELD_NUMBER;
+        hash = (53 * hash) + getI2SDin();
+        hash = (37 * hash) + I2S_SCK_FIELD_NUMBER;
+        hash = (53 * hash) + getI2SSck();
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -2198,10 +2270,12 @@ public final class ModuleConfigProtos {
           super.clear();
           bitField0_ = 0;
           codec2Enabled_ = false;
-          micChan_ = 0;
-          ampPin_ = 0;
           pttPin_ = 0;
           bitrate_ = 0;
+          i2SWs_ = 0;
+          i2SSd_ = 0;
+          i2SDin_ = 0;
+          i2SSck_ = 0;
           return this;
         }
 
@@ -2239,16 +2313,22 @@ public final class ModuleConfigProtos {
             result.codec2Enabled_ = codec2Enabled_;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.micChan_ = micChan_;
-          }
-          if (((from_bitField0_ & 0x00000004) != 0)) {
-            result.ampPin_ = ampPin_;
-          }
-          if (((from_bitField0_ & 0x00000008) != 0)) {
             result.pttPin_ = pttPin_;
           }
-          if (((from_bitField0_ & 0x00000010) != 0)) {
+          if (((from_bitField0_ & 0x00000004) != 0)) {
             result.bitrate_ = bitrate_;
+          }
+          if (((from_bitField0_ & 0x00000008) != 0)) {
+            result.i2SWs_ = i2SWs_;
+          }
+          if (((from_bitField0_ & 0x00000010) != 0)) {
+            result.i2SSd_ = i2SSd_;
+          }
+          if (((from_bitField0_ & 0x00000020) != 0)) {
+            result.i2SDin_ = i2SDin_;
+          }
+          if (((from_bitField0_ & 0x00000040) != 0)) {
+            result.i2SSck_ = i2SSck_;
           }
         }
 
@@ -2299,17 +2379,23 @@ public final class ModuleConfigProtos {
           if (other.getCodec2Enabled() != false) {
             setCodec2Enabled(other.getCodec2Enabled());
           }
-          if (other.getMicChan() != 0) {
-            setMicChan(other.getMicChan());
-          }
-          if (other.getAmpPin() != 0) {
-            setAmpPin(other.getAmpPin());
-          }
           if (other.getPttPin() != 0) {
             setPttPin(other.getPttPin());
           }
           if (other.bitrate_ != 0) {
             setBitrateValue(other.getBitrateValue());
+          }
+          if (other.getI2SWs() != 0) {
+            setI2SWs(other.getI2SWs());
+          }
+          if (other.getI2SSd() != 0) {
+            setI2SSd(other.getI2SSd());
+          }
+          if (other.getI2SDin() != 0) {
+            setI2SDin(other.getI2SDin());
+          }
+          if (other.getI2SSck() != 0) {
+            setI2SSck(other.getI2SSck());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           onChanged();
@@ -2343,25 +2429,35 @@ public final class ModuleConfigProtos {
                   break;
                 } // case 8
                 case 16: {
-                  micChan_ = input.readUInt32();
+                  pttPin_ = input.readUInt32();
                   bitField0_ |= 0x00000002;
                   break;
                 } // case 16
                 case 24: {
-                  ampPin_ = input.readUInt32();
+                  bitrate_ = input.readEnum();
                   bitField0_ |= 0x00000004;
                   break;
                 } // case 24
                 case 32: {
-                  pttPin_ = input.readUInt32();
+                  i2SWs_ = input.readUInt32();
                   bitField0_ |= 0x00000008;
                   break;
                 } // case 32
                 case 40: {
-                  bitrate_ = input.readEnum();
+                  i2SSd_ = input.readUInt32();
                   bitField0_ |= 0x00000010;
                   break;
                 } // case 40
+                case 48: {
+                  i2SDin_ = input.readUInt32();
+                  bitField0_ |= 0x00000020;
+                  break;
+                } // case 48
+                case 56: {
+                  i2SSck_ = input.readUInt32();
+                  bitField0_ |= 0x00000040;
+                  break;
+                } // case 56
                 default: {
                   if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                     done = true; // was an endgroup tag
@@ -2423,101 +2519,13 @@ public final class ModuleConfigProtos {
           return this;
         }
 
-        private int micChan_ ;
-        /**
-         * <pre>
-         * ADC where Microphone is connected
-         * </pre>
-         *
-         * <code>uint32 mic_chan = 2;</code>
-         * @return The micChan.
-         */
-        @java.lang.Override
-        public int getMicChan() {
-          return micChan_;
-        }
-        /**
-         * <pre>
-         * ADC where Microphone is connected
-         * </pre>
-         *
-         * <code>uint32 mic_chan = 2;</code>
-         * @param value The micChan to set.
-         * @return This builder for chaining.
-         */
-        public Builder setMicChan(int value) {
-          
-          micChan_ = value;
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * ADC where Microphone is connected
-         * </pre>
-         *
-         * <code>uint32 mic_chan = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearMicChan() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          micChan_ = 0;
-          onChanged();
-          return this;
-        }
-
-        private int ampPin_ ;
-        /**
-         * <pre>
-         * DAC where Speaker is connected
-         * </pre>
-         *
-         * <code>uint32 amp_pin = 3;</code>
-         * @return The ampPin.
-         */
-        @java.lang.Override
-        public int getAmpPin() {
-          return ampPin_;
-        }
-        /**
-         * <pre>
-         * DAC where Speaker is connected
-         * </pre>
-         *
-         * <code>uint32 amp_pin = 3;</code>
-         * @param value The ampPin to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAmpPin(int value) {
-          
-          ampPin_ = value;
-          bitField0_ |= 0x00000004;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * DAC where Speaker is connected
-         * </pre>
-         *
-         * <code>uint32 amp_pin = 3;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearAmpPin() {
-          bitField0_ = (bitField0_ & ~0x00000004);
-          ampPin_ = 0;
-          onChanged();
-          return this;
-        }
-
         private int pttPin_ ;
         /**
          * <pre>
          * PTT Pin
          * </pre>
          *
-         * <code>uint32 ptt_pin = 4;</code>
+         * <code>uint32 ptt_pin = 2;</code>
          * @return The pttPin.
          */
         @java.lang.Override
@@ -2529,14 +2537,14 @@ public final class ModuleConfigProtos {
          * PTT Pin
          * </pre>
          *
-         * <code>uint32 ptt_pin = 4;</code>
+         * <code>uint32 ptt_pin = 2;</code>
          * @param value The pttPin to set.
          * @return This builder for chaining.
          */
         public Builder setPttPin(int value) {
           
           pttPin_ = value;
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000002;
           onChanged();
           return this;
         }
@@ -2545,11 +2553,11 @@ public final class ModuleConfigProtos {
          * PTT Pin
          * </pre>
          *
-         * <code>uint32 ptt_pin = 4;</code>
+         * <code>uint32 ptt_pin = 2;</code>
          * @return This builder for chaining.
          */
         public Builder clearPttPin() {
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000002);
           pttPin_ = 0;
           onChanged();
           return this;
@@ -2561,7 +2569,7 @@ public final class ModuleConfigProtos {
          * The audio sample rate to use for codec2
          * </pre>
          *
-         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
          * @return The enum numeric value on the wire for bitrate.
          */
         @java.lang.Override public int getBitrateValue() {
@@ -2572,13 +2580,13 @@ public final class ModuleConfigProtos {
          * The audio sample rate to use for codec2
          * </pre>
          *
-         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
          * @param value The enum numeric value on the wire for bitrate to set.
          * @return This builder for chaining.
          */
         public Builder setBitrateValue(int value) {
           bitrate_ = value;
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000004;
           onChanged();
           return this;
         }
@@ -2587,7 +2595,7 @@ public final class ModuleConfigProtos {
          * The audio sample rate to use for codec2
          * </pre>
          *
-         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
          * @return The bitrate.
          */
         @java.lang.Override
@@ -2600,7 +2608,7 @@ public final class ModuleConfigProtos {
          * The audio sample rate to use for codec2
          * </pre>
          *
-         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
          * @param value The bitrate to set.
          * @return This builder for chaining.
          */
@@ -2608,7 +2616,7 @@ public final class ModuleConfigProtos {
           if (value == null) {
             throw new NullPointerException();
           }
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000004;
           bitrate_ = value.getNumber();
           onChanged();
           return this;
@@ -2618,12 +2626,188 @@ public final class ModuleConfigProtos {
          * The audio sample rate to use for codec2
          * </pre>
          *
-         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 5;</code>
+         * <code>.ModuleConfig.AudioConfig.Audio_Baud bitrate = 3;</code>
          * @return This builder for chaining.
          */
         public Builder clearBitrate() {
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
           bitrate_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int i2SWs_ ;
+        /**
+         * <pre>
+         * I2S Word Select
+         * </pre>
+         *
+         * <code>uint32 i2s_ws = 4;</code>
+         * @return The i2sWs.
+         */
+        @java.lang.Override
+        public int getI2SWs() {
+          return i2SWs_;
+        }
+        /**
+         * <pre>
+         * I2S Word Select
+         * </pre>
+         *
+         * <code>uint32 i2s_ws = 4;</code>
+         * @param value The i2sWs to set.
+         * @return This builder for chaining.
+         */
+        public Builder setI2SWs(int value) {
+          
+          i2SWs_ = value;
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * I2S Word Select
+         * </pre>
+         *
+         * <code>uint32 i2s_ws = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearI2SWs() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          i2SWs_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int i2SSd_ ;
+        /**
+         * <pre>
+         * I2S Data IN
+         * </pre>
+         *
+         * <code>uint32 i2s_sd = 5;</code>
+         * @return The i2sSd.
+         */
+        @java.lang.Override
+        public int getI2SSd() {
+          return i2SSd_;
+        }
+        /**
+         * <pre>
+         * I2S Data IN
+         * </pre>
+         *
+         * <code>uint32 i2s_sd = 5;</code>
+         * @param value The i2sSd to set.
+         * @return This builder for chaining.
+         */
+        public Builder setI2SSd(int value) {
+          
+          i2SSd_ = value;
+          bitField0_ |= 0x00000010;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * I2S Data IN
+         * </pre>
+         *
+         * <code>uint32 i2s_sd = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearI2SSd() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          i2SSd_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int i2SDin_ ;
+        /**
+         * <pre>
+         * I2S Data OUT
+         * </pre>
+         *
+         * <code>uint32 i2s_din = 6;</code>
+         * @return The i2sDin.
+         */
+        @java.lang.Override
+        public int getI2SDin() {
+          return i2SDin_;
+        }
+        /**
+         * <pre>
+         * I2S Data OUT
+         * </pre>
+         *
+         * <code>uint32 i2s_din = 6;</code>
+         * @param value The i2sDin to set.
+         * @return This builder for chaining.
+         */
+        public Builder setI2SDin(int value) {
+          
+          i2SDin_ = value;
+          bitField0_ |= 0x00000020;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * I2S Data OUT
+         * </pre>
+         *
+         * <code>uint32 i2s_din = 6;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearI2SDin() {
+          bitField0_ = (bitField0_ & ~0x00000020);
+          i2SDin_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int i2SSck_ ;
+        /**
+         * <pre>
+         * I2S Clock
+         * </pre>
+         *
+         * <code>uint32 i2s_sck = 7;</code>
+         * @return The i2sSck.
+         */
+        @java.lang.Override
+        public int getI2SSck() {
+          return i2SSck_;
+        }
+        /**
+         * <pre>
+         * I2S Clock
+         * </pre>
+         *
+         * <code>uint32 i2s_sck = 7;</code>
+         * @param value The i2sSck to set.
+         * @return This builder for chaining.
+         */
+        public Builder setI2SSck(int value) {
+          
+          i2SSck_ = value;
+          bitField0_ |= 0x00000040;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * I2S Clock
+         * </pre>
+         *
+         * <code>uint32 i2s_sck = 7;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearI2SSck() {
+          bitField0_ = (bitField0_ & ~0x00000040);
+          i2SSck_ = 0;
           onChanged();
           return this;
         }
@@ -4238,7 +4422,7 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * Preferences for the ExternalNotificationModule
+       * Enable the ExternalNotificationModule
        * </pre>
        *
        * <code>bool enabled = 1;</code>
@@ -4248,7 +4432,8 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * TODO: REPLACE
+       * When using in On/Off mode, keep the output on for this many
+       * milliseconds. Default 1000ms (1 second).
        * </pre>
        *
        * <code>uint32 output_ms = 2;</code>
@@ -4258,7 +4443,9 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * TODO: REPLACE
+       * Define the output pin GPIO setting Defaults to
+       * EXT_NOTIFY_OUT if set for the board.
+       * In standalone devices this pin should drive the LED to match the UI.
        * </pre>
        *
        * <code>uint32 output = 3;</code>
@@ -4268,7 +4455,30 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * TODO: REPLACE
+       * Optional: Define a secondary output pin for a vibra motor
+       * This is used in standalone devices to match the UI.
+       * </pre>
+       *
+       * <code>uint32 output_vibra = 8;</code>
+       * @return The outputVibra.
+       */
+      int getOutputVibra();
+
+      /**
+       * <pre>
+       * Optional: Define a tertiary output pin for an active buzzer
+       * This is used in standalone devices to to match the UI.
+       * </pre>
+       *
+       * <code>uint32 output_buzzer = 9;</code>
+       * @return The outputBuzzer.
+       */
+      int getOutputBuzzer();
+
+      /**
+       * <pre>
+       * IF this is true, the 'output' Pin will be pulled active high, false
+       * means active low.
        * </pre>
        *
        * <code>bool active = 4;</code>
@@ -4278,7 +4488,7 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * TODO: REPLACE
+       * True: Alert when a text message arrives (output)
        * </pre>
        *
        * <code>bool alert_message = 5;</code>
@@ -4288,7 +4498,27 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * TODO: REPLACE
+       * True: Alert when a text message arrives (output_vibra)
+       * </pre>
+       *
+       * <code>bool alert_message_vibra = 10;</code>
+       * @return The alertMessageVibra.
+       */
+      boolean getAlertMessageVibra();
+
+      /**
+       * <pre>
+       * True: Alert when a text message arrives (output_buzzer)
+       * </pre>
+       *
+       * <code>bool alert_message_buzzer = 11;</code>
+       * @return The alertMessageBuzzer.
+       */
+      boolean getAlertMessageBuzzer();
+
+      /**
+       * <pre>
+       * True: Alert when the bell character is received (output)
        * </pre>
        *
        * <code>bool alert_bell = 6;</code>
@@ -4298,13 +4528,47 @@ public final class ModuleConfigProtos {
 
       /**
        * <pre>
-       * TODO: REPLACE
+       * True: Alert when the bell character is received (output_vibra)
+       * </pre>
+       *
+       * <code>bool alert_bell_vibra = 12;</code>
+       * @return The alertBellVibra.
+       */
+      boolean getAlertBellVibra();
+
+      /**
+       * <pre>
+       * True: Alert when the bell character is received (output_buzzer)
+       * </pre>
+       *
+       * <code>bool alert_bell_buzzer = 13;</code>
+       * @return The alertBellBuzzer.
+       */
+      boolean getAlertBellBuzzer();
+
+      /**
+       * <pre>
+       * use a PWM output instead of a simple on/off output. This will ignore
+       * the 'output', 'output_ms' and 'active' settings and use the
+       * device.buzzer_gpio instead.
        * </pre>
        *
        * <code>bool use_pwm = 7;</code>
        * @return The usePwm.
        */
       boolean getUsePwm();
+
+      /**
+       * <pre>
+       * The notification will toggle with 'output_ms' for this time of seconds.
+       * Default is 0 which means don't repeat at all. 60 would mean blink
+       * and/or beep for 60 seconds
+       * </pre>
+       *
+       * <code>uint32 nag_timeout = 14;</code>
+       * @return The nagTimeout.
+       */
+      int getNagTimeout();
     }
     /**
      * <pre>
@@ -4354,7 +4618,7 @@ public final class ModuleConfigProtos {
       private boolean enabled_ = false;
       /**
        * <pre>
-       * Preferences for the ExternalNotificationModule
+       * Enable the ExternalNotificationModule
        * </pre>
        *
        * <code>bool enabled = 1;</code>
@@ -4369,7 +4633,8 @@ public final class ModuleConfigProtos {
       private int outputMs_ = 0;
       /**
        * <pre>
-       * TODO: REPLACE
+       * When using in On/Off mode, keep the output on for this many
+       * milliseconds. Default 1000ms (1 second).
        * </pre>
        *
        * <code>uint32 output_ms = 2;</code>
@@ -4384,7 +4649,9 @@ public final class ModuleConfigProtos {
       private int output_ = 0;
       /**
        * <pre>
-       * TODO: REPLACE
+       * Define the output pin GPIO setting Defaults to
+       * EXT_NOTIFY_OUT if set for the board.
+       * In standalone devices this pin should drive the LED to match the UI.
        * </pre>
        *
        * <code>uint32 output = 3;</code>
@@ -4395,11 +4662,44 @@ public final class ModuleConfigProtos {
         return output_;
       }
 
+      public static final int OUTPUT_VIBRA_FIELD_NUMBER = 8;
+      private int outputVibra_ = 0;
+      /**
+       * <pre>
+       * Optional: Define a secondary output pin for a vibra motor
+       * This is used in standalone devices to match the UI.
+       * </pre>
+       *
+       * <code>uint32 output_vibra = 8;</code>
+       * @return The outputVibra.
+       */
+      @java.lang.Override
+      public int getOutputVibra() {
+        return outputVibra_;
+      }
+
+      public static final int OUTPUT_BUZZER_FIELD_NUMBER = 9;
+      private int outputBuzzer_ = 0;
+      /**
+       * <pre>
+       * Optional: Define a tertiary output pin for an active buzzer
+       * This is used in standalone devices to to match the UI.
+       * </pre>
+       *
+       * <code>uint32 output_buzzer = 9;</code>
+       * @return The outputBuzzer.
+       */
+      @java.lang.Override
+      public int getOutputBuzzer() {
+        return outputBuzzer_;
+      }
+
       public static final int ACTIVE_FIELD_NUMBER = 4;
       private boolean active_ = false;
       /**
        * <pre>
-       * TODO: REPLACE
+       * IF this is true, the 'output' Pin will be pulled active high, false
+       * means active low.
        * </pre>
        *
        * <code>bool active = 4;</code>
@@ -4414,7 +4714,7 @@ public final class ModuleConfigProtos {
       private boolean alertMessage_ = false;
       /**
        * <pre>
-       * TODO: REPLACE
+       * True: Alert when a text message arrives (output)
        * </pre>
        *
        * <code>bool alert_message = 5;</code>
@@ -4425,11 +4725,41 @@ public final class ModuleConfigProtos {
         return alertMessage_;
       }
 
+      public static final int ALERT_MESSAGE_VIBRA_FIELD_NUMBER = 10;
+      private boolean alertMessageVibra_ = false;
+      /**
+       * <pre>
+       * True: Alert when a text message arrives (output_vibra)
+       * </pre>
+       *
+       * <code>bool alert_message_vibra = 10;</code>
+       * @return The alertMessageVibra.
+       */
+      @java.lang.Override
+      public boolean getAlertMessageVibra() {
+        return alertMessageVibra_;
+      }
+
+      public static final int ALERT_MESSAGE_BUZZER_FIELD_NUMBER = 11;
+      private boolean alertMessageBuzzer_ = false;
+      /**
+       * <pre>
+       * True: Alert when a text message arrives (output_buzzer)
+       * </pre>
+       *
+       * <code>bool alert_message_buzzer = 11;</code>
+       * @return The alertMessageBuzzer.
+       */
+      @java.lang.Override
+      public boolean getAlertMessageBuzzer() {
+        return alertMessageBuzzer_;
+      }
+
       public static final int ALERT_BELL_FIELD_NUMBER = 6;
       private boolean alertBell_ = false;
       /**
        * <pre>
-       * TODO: REPLACE
+       * True: Alert when the bell character is received (output)
        * </pre>
        *
        * <code>bool alert_bell = 6;</code>
@@ -4440,11 +4770,43 @@ public final class ModuleConfigProtos {
         return alertBell_;
       }
 
+      public static final int ALERT_BELL_VIBRA_FIELD_NUMBER = 12;
+      private boolean alertBellVibra_ = false;
+      /**
+       * <pre>
+       * True: Alert when the bell character is received (output_vibra)
+       * </pre>
+       *
+       * <code>bool alert_bell_vibra = 12;</code>
+       * @return The alertBellVibra.
+       */
+      @java.lang.Override
+      public boolean getAlertBellVibra() {
+        return alertBellVibra_;
+      }
+
+      public static final int ALERT_BELL_BUZZER_FIELD_NUMBER = 13;
+      private boolean alertBellBuzzer_ = false;
+      /**
+       * <pre>
+       * True: Alert when the bell character is received (output_buzzer)
+       * </pre>
+       *
+       * <code>bool alert_bell_buzzer = 13;</code>
+       * @return The alertBellBuzzer.
+       */
+      @java.lang.Override
+      public boolean getAlertBellBuzzer() {
+        return alertBellBuzzer_;
+      }
+
       public static final int USE_PWM_FIELD_NUMBER = 7;
       private boolean usePwm_ = false;
       /**
        * <pre>
-       * TODO: REPLACE
+       * use a PWM output instead of a simple on/off output. This will ignore
+       * the 'output', 'output_ms' and 'active' settings and use the
+       * device.buzzer_gpio instead.
        * </pre>
        *
        * <code>bool use_pwm = 7;</code>
@@ -4453,6 +4815,23 @@ public final class ModuleConfigProtos {
       @java.lang.Override
       public boolean getUsePwm() {
         return usePwm_;
+      }
+
+      public static final int NAG_TIMEOUT_FIELD_NUMBER = 14;
+      private int nagTimeout_ = 0;
+      /**
+       * <pre>
+       * The notification will toggle with 'output_ms' for this time of seconds.
+       * Default is 0 which means don't repeat at all. 60 would mean blink
+       * and/or beep for 60 seconds
+       * </pre>
+       *
+       * <code>uint32 nag_timeout = 14;</code>
+       * @return The nagTimeout.
+       */
+      @java.lang.Override
+      public int getNagTimeout() {
+        return nagTimeout_;
       }
 
       private byte memoizedIsInitialized = -1;
@@ -4489,6 +4868,27 @@ public final class ModuleConfigProtos {
         }
         if (usePwm_ != false) {
           output.writeBool(7, usePwm_);
+        }
+        if (outputVibra_ != 0) {
+          output.writeUInt32(8, outputVibra_);
+        }
+        if (outputBuzzer_ != 0) {
+          output.writeUInt32(9, outputBuzzer_);
+        }
+        if (alertMessageVibra_ != false) {
+          output.writeBool(10, alertMessageVibra_);
+        }
+        if (alertMessageBuzzer_ != false) {
+          output.writeBool(11, alertMessageBuzzer_);
+        }
+        if (alertBellVibra_ != false) {
+          output.writeBool(12, alertBellVibra_);
+        }
+        if (alertBellBuzzer_ != false) {
+          output.writeBool(13, alertBellBuzzer_);
+        }
+        if (nagTimeout_ != 0) {
+          output.writeUInt32(14, nagTimeout_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -4527,6 +4927,34 @@ public final class ModuleConfigProtos {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(7, usePwm_);
         }
+        if (outputVibra_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(8, outputVibra_);
+        }
+        if (outputBuzzer_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(9, outputBuzzer_);
+        }
+        if (alertMessageVibra_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(10, alertMessageVibra_);
+        }
+        if (alertMessageBuzzer_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(11, alertMessageBuzzer_);
+        }
+        if (alertBellVibra_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(12, alertBellVibra_);
+        }
+        if (alertBellBuzzer_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(13, alertBellBuzzer_);
+        }
+        if (nagTimeout_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(14, nagTimeout_);
+        }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
         return size;
@@ -4548,14 +4976,28 @@ public final class ModuleConfigProtos {
             != other.getOutputMs()) return false;
         if (getOutput()
             != other.getOutput()) return false;
+        if (getOutputVibra()
+            != other.getOutputVibra()) return false;
+        if (getOutputBuzzer()
+            != other.getOutputBuzzer()) return false;
         if (getActive()
             != other.getActive()) return false;
         if (getAlertMessage()
             != other.getAlertMessage()) return false;
+        if (getAlertMessageVibra()
+            != other.getAlertMessageVibra()) return false;
+        if (getAlertMessageBuzzer()
+            != other.getAlertMessageBuzzer()) return false;
         if (getAlertBell()
             != other.getAlertBell()) return false;
+        if (getAlertBellVibra()
+            != other.getAlertBellVibra()) return false;
+        if (getAlertBellBuzzer()
+            != other.getAlertBellBuzzer()) return false;
         if (getUsePwm()
             != other.getUsePwm()) return false;
+        if (getNagTimeout()
+            != other.getNagTimeout()) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
       }
@@ -4574,18 +5016,36 @@ public final class ModuleConfigProtos {
         hash = (53 * hash) + getOutputMs();
         hash = (37 * hash) + OUTPUT_FIELD_NUMBER;
         hash = (53 * hash) + getOutput();
+        hash = (37 * hash) + OUTPUT_VIBRA_FIELD_NUMBER;
+        hash = (53 * hash) + getOutputVibra();
+        hash = (37 * hash) + OUTPUT_BUZZER_FIELD_NUMBER;
+        hash = (53 * hash) + getOutputBuzzer();
         hash = (37 * hash) + ACTIVE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getActive());
         hash = (37 * hash) + ALERT_MESSAGE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getAlertMessage());
+        hash = (37 * hash) + ALERT_MESSAGE_VIBRA_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAlertMessageVibra());
+        hash = (37 * hash) + ALERT_MESSAGE_BUZZER_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAlertMessageBuzzer());
         hash = (37 * hash) + ALERT_BELL_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getAlertBell());
+        hash = (37 * hash) + ALERT_BELL_VIBRA_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAlertBellVibra());
+        hash = (37 * hash) + ALERT_BELL_BUZZER_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAlertBellBuzzer());
         hash = (37 * hash) + USE_PWM_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getUsePwm());
+        hash = (37 * hash) + NAG_TIMEOUT_FIELD_NUMBER;
+        hash = (53 * hash) + getNagTimeout();
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -4722,10 +5182,17 @@ public final class ModuleConfigProtos {
           enabled_ = false;
           outputMs_ = 0;
           output_ = 0;
+          outputVibra_ = 0;
+          outputBuzzer_ = 0;
           active_ = false;
           alertMessage_ = false;
+          alertMessageVibra_ = false;
+          alertMessageBuzzer_ = false;
           alertBell_ = false;
+          alertBellVibra_ = false;
+          alertBellBuzzer_ = false;
           usePwm_ = false;
+          nagTimeout_ = 0;
           return this;
         }
 
@@ -4769,16 +5236,37 @@ public final class ModuleConfigProtos {
             result.output_ = output_;
           }
           if (((from_bitField0_ & 0x00000008) != 0)) {
-            result.active_ = active_;
+            result.outputVibra_ = outputVibra_;
           }
           if (((from_bitField0_ & 0x00000010) != 0)) {
-            result.alertMessage_ = alertMessage_;
+            result.outputBuzzer_ = outputBuzzer_;
           }
           if (((from_bitField0_ & 0x00000020) != 0)) {
-            result.alertBell_ = alertBell_;
+            result.active_ = active_;
           }
           if (((from_bitField0_ & 0x00000040) != 0)) {
+            result.alertMessage_ = alertMessage_;
+          }
+          if (((from_bitField0_ & 0x00000080) != 0)) {
+            result.alertMessageVibra_ = alertMessageVibra_;
+          }
+          if (((from_bitField0_ & 0x00000100) != 0)) {
+            result.alertMessageBuzzer_ = alertMessageBuzzer_;
+          }
+          if (((from_bitField0_ & 0x00000200) != 0)) {
+            result.alertBell_ = alertBell_;
+          }
+          if (((from_bitField0_ & 0x00000400) != 0)) {
+            result.alertBellVibra_ = alertBellVibra_;
+          }
+          if (((from_bitField0_ & 0x00000800) != 0)) {
+            result.alertBellBuzzer_ = alertBellBuzzer_;
+          }
+          if (((from_bitField0_ & 0x00001000) != 0)) {
             result.usePwm_ = usePwm_;
+          }
+          if (((from_bitField0_ & 0x00002000) != 0)) {
+            result.nagTimeout_ = nagTimeout_;
           }
         }
 
@@ -4835,17 +5323,38 @@ public final class ModuleConfigProtos {
           if (other.getOutput() != 0) {
             setOutput(other.getOutput());
           }
+          if (other.getOutputVibra() != 0) {
+            setOutputVibra(other.getOutputVibra());
+          }
+          if (other.getOutputBuzzer() != 0) {
+            setOutputBuzzer(other.getOutputBuzzer());
+          }
           if (other.getActive() != false) {
             setActive(other.getActive());
           }
           if (other.getAlertMessage() != false) {
             setAlertMessage(other.getAlertMessage());
           }
+          if (other.getAlertMessageVibra() != false) {
+            setAlertMessageVibra(other.getAlertMessageVibra());
+          }
+          if (other.getAlertMessageBuzzer() != false) {
+            setAlertMessageBuzzer(other.getAlertMessageBuzzer());
+          }
           if (other.getAlertBell() != false) {
             setAlertBell(other.getAlertBell());
           }
+          if (other.getAlertBellVibra() != false) {
+            setAlertBellVibra(other.getAlertBellVibra());
+          }
+          if (other.getAlertBellBuzzer() != false) {
+            setAlertBellBuzzer(other.getAlertBellBuzzer());
+          }
           if (other.getUsePwm() != false) {
             setUsePwm(other.getUsePwm());
+          }
+          if (other.getNagTimeout() != 0) {
+            setNagTimeout(other.getNagTimeout());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           onChanged();
@@ -4890,24 +5399,59 @@ public final class ModuleConfigProtos {
                 } // case 24
                 case 32: {
                   active_ = input.readBool();
-                  bitField0_ |= 0x00000008;
+                  bitField0_ |= 0x00000020;
                   break;
                 } // case 32
                 case 40: {
                   alertMessage_ = input.readBool();
-                  bitField0_ |= 0x00000010;
+                  bitField0_ |= 0x00000040;
                   break;
                 } // case 40
                 case 48: {
                   alertBell_ = input.readBool();
-                  bitField0_ |= 0x00000020;
+                  bitField0_ |= 0x00000200;
                   break;
                 } // case 48
                 case 56: {
                   usePwm_ = input.readBool();
-                  bitField0_ |= 0x00000040;
+                  bitField0_ |= 0x00001000;
                   break;
                 } // case 56
+                case 64: {
+                  outputVibra_ = input.readUInt32();
+                  bitField0_ |= 0x00000008;
+                  break;
+                } // case 64
+                case 72: {
+                  outputBuzzer_ = input.readUInt32();
+                  bitField0_ |= 0x00000010;
+                  break;
+                } // case 72
+                case 80: {
+                  alertMessageVibra_ = input.readBool();
+                  bitField0_ |= 0x00000080;
+                  break;
+                } // case 80
+                case 88: {
+                  alertMessageBuzzer_ = input.readBool();
+                  bitField0_ |= 0x00000100;
+                  break;
+                } // case 88
+                case 96: {
+                  alertBellVibra_ = input.readBool();
+                  bitField0_ |= 0x00000400;
+                  break;
+                } // case 96
+                case 104: {
+                  alertBellBuzzer_ = input.readBool();
+                  bitField0_ |= 0x00000800;
+                  break;
+                } // case 104
+                case 112: {
+                  nagTimeout_ = input.readUInt32();
+                  bitField0_ |= 0x00002000;
+                  break;
+                } // case 112
                 default: {
                   if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                     done = true; // was an endgroup tag
@@ -4928,7 +5472,7 @@ public final class ModuleConfigProtos {
         private boolean enabled_ ;
         /**
          * <pre>
-         * Preferences for the ExternalNotificationModule
+         * Enable the ExternalNotificationModule
          * </pre>
          *
          * <code>bool enabled = 1;</code>
@@ -4940,7 +5484,7 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * Preferences for the ExternalNotificationModule
+         * Enable the ExternalNotificationModule
          * </pre>
          *
          * <code>bool enabled = 1;</code>
@@ -4956,7 +5500,7 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * Preferences for the ExternalNotificationModule
+         * Enable the ExternalNotificationModule
          * </pre>
          *
          * <code>bool enabled = 1;</code>
@@ -4972,7 +5516,8 @@ public final class ModuleConfigProtos {
         private int outputMs_ ;
         /**
          * <pre>
-         * TODO: REPLACE
+         * When using in On/Off mode, keep the output on for this many
+         * milliseconds. Default 1000ms (1 second).
          * </pre>
          *
          * <code>uint32 output_ms = 2;</code>
@@ -4984,7 +5529,8 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * When using in On/Off mode, keep the output on for this many
+         * milliseconds. Default 1000ms (1 second).
          * </pre>
          *
          * <code>uint32 output_ms = 2;</code>
@@ -5000,7 +5546,8 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * When using in On/Off mode, keep the output on for this many
+         * milliseconds. Default 1000ms (1 second).
          * </pre>
          *
          * <code>uint32 output_ms = 2;</code>
@@ -5016,7 +5563,9 @@ public final class ModuleConfigProtos {
         private int output_ ;
         /**
          * <pre>
-         * TODO: REPLACE
+         * Define the output pin GPIO setting Defaults to
+         * EXT_NOTIFY_OUT if set for the board.
+         * In standalone devices this pin should drive the LED to match the UI.
          * </pre>
          *
          * <code>uint32 output = 3;</code>
@@ -5028,7 +5577,9 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * Define the output pin GPIO setting Defaults to
+         * EXT_NOTIFY_OUT if set for the board.
+         * In standalone devices this pin should drive the LED to match the UI.
          * </pre>
          *
          * <code>uint32 output = 3;</code>
@@ -5044,7 +5595,9 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * Define the output pin GPIO setting Defaults to
+         * EXT_NOTIFY_OUT if set for the board.
+         * In standalone devices this pin should drive the LED to match the UI.
          * </pre>
          *
          * <code>uint32 output = 3;</code>
@@ -5057,10 +5610,105 @@ public final class ModuleConfigProtos {
           return this;
         }
 
+        private int outputVibra_ ;
+        /**
+         * <pre>
+         * Optional: Define a secondary output pin for a vibra motor
+         * This is used in standalone devices to match the UI.
+         * </pre>
+         *
+         * <code>uint32 output_vibra = 8;</code>
+         * @return The outputVibra.
+         */
+        @java.lang.Override
+        public int getOutputVibra() {
+          return outputVibra_;
+        }
+        /**
+         * <pre>
+         * Optional: Define a secondary output pin for a vibra motor
+         * This is used in standalone devices to match the UI.
+         * </pre>
+         *
+         * <code>uint32 output_vibra = 8;</code>
+         * @param value The outputVibra to set.
+         * @return This builder for chaining.
+         */
+        public Builder setOutputVibra(int value) {
+          
+          outputVibra_ = value;
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Optional: Define a secondary output pin for a vibra motor
+         * This is used in standalone devices to match the UI.
+         * </pre>
+         *
+         * <code>uint32 output_vibra = 8;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearOutputVibra() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          outputVibra_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int outputBuzzer_ ;
+        /**
+         * <pre>
+         * Optional: Define a tertiary output pin for an active buzzer
+         * This is used in standalone devices to to match the UI.
+         * </pre>
+         *
+         * <code>uint32 output_buzzer = 9;</code>
+         * @return The outputBuzzer.
+         */
+        @java.lang.Override
+        public int getOutputBuzzer() {
+          return outputBuzzer_;
+        }
+        /**
+         * <pre>
+         * Optional: Define a tertiary output pin for an active buzzer
+         * This is used in standalone devices to to match the UI.
+         * </pre>
+         *
+         * <code>uint32 output_buzzer = 9;</code>
+         * @param value The outputBuzzer to set.
+         * @return This builder for chaining.
+         */
+        public Builder setOutputBuzzer(int value) {
+          
+          outputBuzzer_ = value;
+          bitField0_ |= 0x00000010;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Optional: Define a tertiary output pin for an active buzzer
+         * This is used in standalone devices to to match the UI.
+         * </pre>
+         *
+         * <code>uint32 output_buzzer = 9;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearOutputBuzzer() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          outputBuzzer_ = 0;
+          onChanged();
+          return this;
+        }
+
         private boolean active_ ;
         /**
          * <pre>
-         * TODO: REPLACE
+         * IF this is true, the 'output' Pin will be pulled active high, false
+         * means active low.
          * </pre>
          *
          * <code>bool active = 4;</code>
@@ -5072,7 +5720,8 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * IF this is true, the 'output' Pin will be pulled active high, false
+         * means active low.
          * </pre>
          *
          * <code>bool active = 4;</code>
@@ -5082,20 +5731,21 @@ public final class ModuleConfigProtos {
         public Builder setActive(boolean value) {
           
           active_ = value;
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000020;
           onChanged();
           return this;
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * IF this is true, the 'output' Pin will be pulled active high, false
+         * means active low.
          * </pre>
          *
          * <code>bool active = 4;</code>
          * @return This builder for chaining.
          */
         public Builder clearActive() {
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000020);
           active_ = false;
           onChanged();
           return this;
@@ -5104,7 +5754,7 @@ public final class ModuleConfigProtos {
         private boolean alertMessage_ ;
         /**
          * <pre>
-         * TODO: REPLACE
+         * True: Alert when a text message arrives (output)
          * </pre>
          *
          * <code>bool alert_message = 5;</code>
@@ -5116,7 +5766,7 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * True: Alert when a text message arrives (output)
          * </pre>
          *
          * <code>bool alert_message = 5;</code>
@@ -5126,21 +5776,109 @@ public final class ModuleConfigProtos {
         public Builder setAlertMessage(boolean value) {
           
           alertMessage_ = value;
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000040;
           onChanged();
           return this;
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * True: Alert when a text message arrives (output)
          * </pre>
          *
          * <code>bool alert_message = 5;</code>
          * @return This builder for chaining.
          */
         public Builder clearAlertMessage() {
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
           alertMessage_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean alertMessageVibra_ ;
+        /**
+         * <pre>
+         * True: Alert when a text message arrives (output_vibra)
+         * </pre>
+         *
+         * <code>bool alert_message_vibra = 10;</code>
+         * @return The alertMessageVibra.
+         */
+        @java.lang.Override
+        public boolean getAlertMessageVibra() {
+          return alertMessageVibra_;
+        }
+        /**
+         * <pre>
+         * True: Alert when a text message arrives (output_vibra)
+         * </pre>
+         *
+         * <code>bool alert_message_vibra = 10;</code>
+         * @param value The alertMessageVibra to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAlertMessageVibra(boolean value) {
+          
+          alertMessageVibra_ = value;
+          bitField0_ |= 0x00000080;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * True: Alert when a text message arrives (output_vibra)
+         * </pre>
+         *
+         * <code>bool alert_message_vibra = 10;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAlertMessageVibra() {
+          bitField0_ = (bitField0_ & ~0x00000080);
+          alertMessageVibra_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean alertMessageBuzzer_ ;
+        /**
+         * <pre>
+         * True: Alert when a text message arrives (output_buzzer)
+         * </pre>
+         *
+         * <code>bool alert_message_buzzer = 11;</code>
+         * @return The alertMessageBuzzer.
+         */
+        @java.lang.Override
+        public boolean getAlertMessageBuzzer() {
+          return alertMessageBuzzer_;
+        }
+        /**
+         * <pre>
+         * True: Alert when a text message arrives (output_buzzer)
+         * </pre>
+         *
+         * <code>bool alert_message_buzzer = 11;</code>
+         * @param value The alertMessageBuzzer to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAlertMessageBuzzer(boolean value) {
+          
+          alertMessageBuzzer_ = value;
+          bitField0_ |= 0x00000100;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * True: Alert when a text message arrives (output_buzzer)
+         * </pre>
+         *
+         * <code>bool alert_message_buzzer = 11;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAlertMessageBuzzer() {
+          bitField0_ = (bitField0_ & ~0x00000100);
+          alertMessageBuzzer_ = false;
           onChanged();
           return this;
         }
@@ -5148,7 +5886,7 @@ public final class ModuleConfigProtos {
         private boolean alertBell_ ;
         /**
          * <pre>
-         * TODO: REPLACE
+         * True: Alert when the bell character is received (output)
          * </pre>
          *
          * <code>bool alert_bell = 6;</code>
@@ -5160,7 +5898,7 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * True: Alert when the bell character is received (output)
          * </pre>
          *
          * <code>bool alert_bell = 6;</code>
@@ -5170,21 +5908,109 @@ public final class ModuleConfigProtos {
         public Builder setAlertBell(boolean value) {
           
           alertBell_ = value;
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000200;
           onChanged();
           return this;
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * True: Alert when the bell character is received (output)
          * </pre>
          *
          * <code>bool alert_bell = 6;</code>
          * @return This builder for chaining.
          */
         public Builder clearAlertBell() {
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000200);
           alertBell_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean alertBellVibra_ ;
+        /**
+         * <pre>
+         * True: Alert when the bell character is received (output_vibra)
+         * </pre>
+         *
+         * <code>bool alert_bell_vibra = 12;</code>
+         * @return The alertBellVibra.
+         */
+        @java.lang.Override
+        public boolean getAlertBellVibra() {
+          return alertBellVibra_;
+        }
+        /**
+         * <pre>
+         * True: Alert when the bell character is received (output_vibra)
+         * </pre>
+         *
+         * <code>bool alert_bell_vibra = 12;</code>
+         * @param value The alertBellVibra to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAlertBellVibra(boolean value) {
+          
+          alertBellVibra_ = value;
+          bitField0_ |= 0x00000400;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * True: Alert when the bell character is received (output_vibra)
+         * </pre>
+         *
+         * <code>bool alert_bell_vibra = 12;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAlertBellVibra() {
+          bitField0_ = (bitField0_ & ~0x00000400);
+          alertBellVibra_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean alertBellBuzzer_ ;
+        /**
+         * <pre>
+         * True: Alert when the bell character is received (output_buzzer)
+         * </pre>
+         *
+         * <code>bool alert_bell_buzzer = 13;</code>
+         * @return The alertBellBuzzer.
+         */
+        @java.lang.Override
+        public boolean getAlertBellBuzzer() {
+          return alertBellBuzzer_;
+        }
+        /**
+         * <pre>
+         * True: Alert when the bell character is received (output_buzzer)
+         * </pre>
+         *
+         * <code>bool alert_bell_buzzer = 13;</code>
+         * @param value The alertBellBuzzer to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAlertBellBuzzer(boolean value) {
+          
+          alertBellBuzzer_ = value;
+          bitField0_ |= 0x00000800;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * True: Alert when the bell character is received (output_buzzer)
+         * </pre>
+         *
+         * <code>bool alert_bell_buzzer = 13;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAlertBellBuzzer() {
+          bitField0_ = (bitField0_ & ~0x00000800);
+          alertBellBuzzer_ = false;
           onChanged();
           return this;
         }
@@ -5192,7 +6018,9 @@ public final class ModuleConfigProtos {
         private boolean usePwm_ ;
         /**
          * <pre>
-         * TODO: REPLACE
+         * use a PWM output instead of a simple on/off output. This will ignore
+         * the 'output', 'output_ms' and 'active' settings and use the
+         * device.buzzer_gpio instead.
          * </pre>
          *
          * <code>bool use_pwm = 7;</code>
@@ -5204,7 +6032,9 @@ public final class ModuleConfigProtos {
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * use a PWM output instead of a simple on/off output. This will ignore
+         * the 'output', 'output_ms' and 'active' settings and use the
+         * device.buzzer_gpio instead.
          * </pre>
          *
          * <code>bool use_pwm = 7;</code>
@@ -5214,21 +6044,73 @@ public final class ModuleConfigProtos {
         public Builder setUsePwm(boolean value) {
           
           usePwm_ = value;
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00001000;
           onChanged();
           return this;
         }
         /**
          * <pre>
-         * TODO: REPLACE
+         * use a PWM output instead of a simple on/off output. This will ignore
+         * the 'output', 'output_ms' and 'active' settings and use the
+         * device.buzzer_gpio instead.
          * </pre>
          *
          * <code>bool use_pwm = 7;</code>
          * @return This builder for chaining.
          */
         public Builder clearUsePwm() {
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00001000);
           usePwm_ = false;
+          onChanged();
+          return this;
+        }
+
+        private int nagTimeout_ ;
+        /**
+         * <pre>
+         * The notification will toggle with 'output_ms' for this time of seconds.
+         * Default is 0 which means don't repeat at all. 60 would mean blink
+         * and/or beep for 60 seconds
+         * </pre>
+         *
+         * <code>uint32 nag_timeout = 14;</code>
+         * @return The nagTimeout.
+         */
+        @java.lang.Override
+        public int getNagTimeout() {
+          return nagTimeout_;
+        }
+        /**
+         * <pre>
+         * The notification will toggle with 'output_ms' for this time of seconds.
+         * Default is 0 which means don't repeat at all. 60 would mean blink
+         * and/or beep for 60 seconds
+         * </pre>
+         *
+         * <code>uint32 nag_timeout = 14;</code>
+         * @param value The nagTimeout to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNagTimeout(int value) {
+          
+          nagTimeout_ = value;
+          bitField0_ |= 0x00002000;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * The notification will toggle with 'output_ms' for this time of seconds.
+         * Default is 0 which means don't repeat at all. 60 would mean blink
+         * and/or beep for 60 seconds
+         * </pre>
+         *
+         * <code>uint32 nag_timeout = 14;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearNagTimeout() {
+          bitField0_ = (bitField0_ & ~0x00002000);
+          nagTimeout_ = 0;
           onChanged();
           return this;
         }
@@ -12201,7 +13083,7 @@ public final class ModuleConfigProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023module_config.proto\"\241\024\n\014ModuleConfig\022(" +
+      "\n\023module_config.proto\"\362\025\n\014ModuleConfig\022(" +
       "\n\004mqtt\030\001 \001(\0132\030.ModuleConfig.MQTTConfigH\000" +
       "\022,\n\006serial\030\002 \001(\0132\032.ModuleConfig.SerialCo" +
       "nfigH\000\022I\n\025external_notification\030\003 \001(\0132(." +
@@ -12216,59 +13098,65 @@ public final class ModuleConfigProtos {
       "onfig\022\017\n\007enabled\030\001 \001(\010\022\017\n\007address\030\002 \001(\t\022" +
       "\020\n\010username\030\003 \001(\t\022\020\n\010password\030\004 \001(\t\022\032\n\022e" +
       "ncryption_enabled\030\005 \001(\010\022\024\n\014json_enabled\030" +
-      "\006 \001(\010\032\272\002\n\013AudioConfig\022\026\n\016codec2_enabled\030" +
-      "\001 \001(\010\022\020\n\010mic_chan\030\002 \001(\r\022\017\n\007amp_pin\030\003 \001(\r" +
-      "\022\017\n\007ptt_pin\030\004 \001(\r\0225\n\007bitrate\030\005 \001(\0162$.Mod" +
-      "uleConfig.AudioConfig.Audio_Baud\"\247\001\n\nAud" +
-      "io_Baud\022\022\n\016CODEC2_DEFAULT\020\000\022\017\n\013CODEC2_32" +
-      "00\020\001\022\017\n\013CODEC2_2400\020\002\022\017\n\013CODEC2_1600\020\003\022\017" +
-      "\n\013CODEC2_1400\020\004\022\017\n\013CODEC2_1300\020\005\022\017\n\013CODE" +
-      "C2_1200\020\006\022\016\n\nCODEC2_700\020\007\022\017\n\013CODEC2_700B" +
-      "\020\010\032\233\004\n\014SerialConfig\022\017\n\007enabled\030\001 \001(\010\022\014\n\004" +
-      "echo\030\002 \001(\010\022\013\n\003rxd\030\003 \001(\r\022\013\n\003txd\030\004 \001(\r\0224\n\004" +
-      "baud\030\005 \001(\0162&.ModuleConfig.SerialConfig.S" +
-      "erial_Baud\022\017\n\007timeout\030\006 \001(\r\0224\n\004mode\030\007 \001(" +
-      "\0162&.ModuleConfig.SerialConfig.Serial_Mod" +
-      "e\"\212\002\n\013Serial_Baud\022\020\n\014BAUD_DEFAULT\020\000\022\014\n\010B" +
-      "AUD_110\020\001\022\014\n\010BAUD_300\020\002\022\014\n\010BAUD_600\020\003\022\r\n" +
-      "\tBAUD_1200\020\004\022\r\n\tBAUD_2400\020\005\022\r\n\tBAUD_4800" +
-      "\020\006\022\r\n\tBAUD_9600\020\007\022\016\n\nBAUD_19200\020\010\022\016\n\nBAU" +
-      "D_38400\020\t\022\016\n\nBAUD_57600\020\n\022\017\n\013BAUD_115200" +
-      "\020\013\022\017\n\013BAUD_230400\020\014\022\017\n\013BAUD_460800\020\r\022\017\n\013" +
-      "BAUD_576000\020\016\022\017\n\013BAUD_921600\020\017\"H\n\013Serial" +
-      "_Mode\022\013\n\007DEFAULT\020\000\022\n\n\006SIMPLE\020\001\022\t\n\005PROTO\020" +
-      "\002\022\013\n\007TEXTMSG\020\003\022\010\n\004NMEA\020\004\032\234\001\n\032ExternalNot" +
-      "ificationConfig\022\017\n\007enabled\030\001 \001(\010\022\021\n\toutp" +
-      "ut_ms\030\002 \001(\r\022\016\n\006output\030\003 \001(\r\022\016\n\006active\030\004 " +
-      "\001(\010\022\025\n\ralert_message\030\005 \001(\010\022\022\n\nalert_bell" +
-      "\030\006 \001(\010\022\017\n\007use_pwm\030\007 \001(\010\032\204\001\n\022StoreForward" +
-      "Config\022\017\n\007enabled\030\001 \001(\010\022\021\n\theartbeat\030\002 \001" +
-      "(\010\022\017\n\007records\030\003 \001(\r\022\032\n\022history_return_ma" +
-      "x\030\004 \001(\r\022\035\n\025history_return_window\030\005 \001(\r\032@" +
-      "\n\017RangeTestConfig\022\017\n\007enabled\030\001 \001(\010\022\016\n\006se" +
-      "nder\030\002 \001(\r\022\014\n\004save\030\003 \001(\010\032\313\001\n\017TelemetryCo" +
-      "nfig\022\036\n\026device_update_interval\030\001 \001(\r\022#\n\033" +
-      "environment_update_interval\030\002 \001(\r\022\'\n\037env" +
-      "ironment_measurement_enabled\030\003 \001(\010\022\"\n\032en" +
-      "vironment_screen_enabled\030\004 \001(\010\022&\n\036enviro" +
-      "nment_display_fahrenheit\030\005 \001(\010\032\265\004\n\023Canne" +
-      "dMessageConfig\022\027\n\017rotary1_enabled\030\001 \001(\010\022" +
-      "\031\n\021inputbroker_pin_a\030\002 \001(\r\022\031\n\021inputbroke" +
-      "r_pin_b\030\003 \001(\r\022\035\n\025inputbroker_pin_press\030\004" +
-      " \001(\r\022N\n\024inputbroker_event_cw\030\005 \001(\01620.Mod" +
-      "uleConfig.CannedMessageConfig.InputEvent" +
-      "Char\022O\n\025inputbroker_event_ccw\030\006 \001(\01620.Mo" +
-      "duleConfig.CannedMessageConfig.InputEven" +
-      "tChar\022Q\n\027inputbroker_event_press\030\007 \001(\01620" +
-      ".ModuleConfig.CannedMessageConfig.InputE" +
-      "ventChar\022\027\n\017updown1_enabled\030\010 \001(\010\022\017\n\007ena" +
-      "bled\030\t \001(\010\022\032\n\022allow_input_source\030\n \001(\t\022\021" +
-      "\n\tsend_bell\030\013 \001(\010\"c\n\016InputEventChar\022\010\n\004N" +
-      "ONE\020\000\022\006\n\002UP\020\021\022\010\n\004DOWN\020\022\022\010\n\004LEFT\020\023\022\t\n\005RIG" +
-      "HT\020\024\022\n\n\006SELECT\020\n\022\010\n\004BACK\020\033\022\n\n\006CANCEL\020\030B\021" +
-      "\n\017payload_variantBO\n\023com.geeksville.mesh" +
-      "B\022ModuleConfigProtosH\003Z\"github.com/mesht" +
-      "astic/go/generatedb\006proto3"
+      "\006 \001(\010\032\331\002\n\013AudioConfig\022\026\n\016codec2_enabled\030" +
+      "\001 \001(\010\022\017\n\007ptt_pin\030\002 \001(\r\0225\n\007bitrate\030\003 \001(\0162" +
+      "$.ModuleConfig.AudioConfig.Audio_Baud\022\016\n" +
+      "\006i2s_ws\030\004 \001(\r\022\016\n\006i2s_sd\030\005 \001(\r\022\017\n\007i2s_din" +
+      "\030\006 \001(\r\022\017\n\007i2s_sck\030\007 \001(\r\"\247\001\n\nAudio_Baud\022\022" +
+      "\n\016CODEC2_DEFAULT\020\000\022\017\n\013CODEC2_3200\020\001\022\017\n\013C" +
+      "ODEC2_2400\020\002\022\017\n\013CODEC2_1600\020\003\022\017\n\013CODEC2_" +
+      "1400\020\004\022\017\n\013CODEC2_1300\020\005\022\017\n\013CODEC2_1200\020\006" +
+      "\022\016\n\nCODEC2_700\020\007\022\017\n\013CODEC2_700B\020\010\032\233\004\n\014Se" +
+      "rialConfig\022\017\n\007enabled\030\001 \001(\010\022\014\n\004echo\030\002 \001(" +
+      "\010\022\013\n\003rxd\030\003 \001(\r\022\013\n\003txd\030\004 \001(\r\0224\n\004baud\030\005 \001(" +
+      "\0162&.ModuleConfig.SerialConfig.Serial_Bau" +
+      "d\022\017\n\007timeout\030\006 \001(\r\0224\n\004mode\030\007 \001(\0162&.Modul" +
+      "eConfig.SerialConfig.Serial_Mode\"\212\002\n\013Ser" +
+      "ial_Baud\022\020\n\014BAUD_DEFAULT\020\000\022\014\n\010BAUD_110\020\001" +
+      "\022\014\n\010BAUD_300\020\002\022\014\n\010BAUD_600\020\003\022\r\n\tBAUD_120" +
+      "0\020\004\022\r\n\tBAUD_2400\020\005\022\r\n\tBAUD_4800\020\006\022\r\n\tBAU" +
+      "D_9600\020\007\022\016\n\nBAUD_19200\020\010\022\016\n\nBAUD_38400\020\t" +
+      "\022\016\n\nBAUD_57600\020\n\022\017\n\013BAUD_115200\020\013\022\017\n\013BAU" +
+      "D_230400\020\014\022\017\n\013BAUD_460800\020\r\022\017\n\013BAUD_5760" +
+      "00\020\016\022\017\n\013BAUD_921600\020\017\"H\n\013Serial_Mode\022\013\n\007" +
+      "DEFAULT\020\000\022\n\n\006SIMPLE\020\001\022\t\n\005PROTO\020\002\022\013\n\007TEXT" +
+      "MSG\020\003\022\010\n\004NMEA\020\004\032\316\002\n\032ExternalNotification" +
+      "Config\022\017\n\007enabled\030\001 \001(\010\022\021\n\toutput_ms\030\002 \001" +
+      "(\r\022\016\n\006output\030\003 \001(\r\022\024\n\014output_vibra\030\010 \001(\r" +
+      "\022\025\n\routput_buzzer\030\t \001(\r\022\016\n\006active\030\004 \001(\010\022" +
+      "\025\n\ralert_message\030\005 \001(\010\022\033\n\023alert_message_" +
+      "vibra\030\n \001(\010\022\034\n\024alert_message_buzzer\030\013 \001(" +
+      "\010\022\022\n\nalert_bell\030\006 \001(\010\022\030\n\020alert_bell_vibr" +
+      "a\030\014 \001(\010\022\031\n\021alert_bell_buzzer\030\r \001(\010\022\017\n\007us" +
+      "e_pwm\030\007 \001(\010\022\023\n\013nag_timeout\030\016 \001(\r\032\204\001\n\022Sto" +
+      "reForwardConfig\022\017\n\007enabled\030\001 \001(\010\022\021\n\thear" +
+      "tbeat\030\002 \001(\010\022\017\n\007records\030\003 \001(\r\022\032\n\022history_" +
+      "return_max\030\004 \001(\r\022\035\n\025history_return_windo" +
+      "w\030\005 \001(\r\032@\n\017RangeTestConfig\022\017\n\007enabled\030\001 " +
+      "\001(\010\022\016\n\006sender\030\002 \001(\r\022\014\n\004save\030\003 \001(\010\032\313\001\n\017Te" +
+      "lemetryConfig\022\036\n\026device_update_interval\030" +
+      "\001 \001(\r\022#\n\033environment_update_interval\030\002 \001" +
+      "(\r\022\'\n\037environment_measurement_enabled\030\003 " +
+      "\001(\010\022\"\n\032environment_screen_enabled\030\004 \001(\010\022" +
+      "&\n\036environment_display_fahrenheit\030\005 \001(\010\032" +
+      "\265\004\n\023CannedMessageConfig\022\027\n\017rotary1_enabl" +
+      "ed\030\001 \001(\010\022\031\n\021inputbroker_pin_a\030\002 \001(\r\022\031\n\021i" +
+      "nputbroker_pin_b\030\003 \001(\r\022\035\n\025inputbroker_pi" +
+      "n_press\030\004 \001(\r\022N\n\024inputbroker_event_cw\030\005 " +
+      "\001(\01620.ModuleConfig.CannedMessageConfig.I" +
+      "nputEventChar\022O\n\025inputbroker_event_ccw\030\006" +
+      " \001(\01620.ModuleConfig.CannedMessageConfig." +
+      "InputEventChar\022Q\n\027inputbroker_event_pres" +
+      "s\030\007 \001(\01620.ModuleConfig.CannedMessageConf" +
+      "ig.InputEventChar\022\027\n\017updown1_enabled\030\010 \001" +
+      "(\010\022\017\n\007enabled\030\t \001(\010\022\032\n\022allow_input_sourc" +
+      "e\030\n \001(\t\022\021\n\tsend_bell\030\013 \001(\010\"c\n\016InputEvent" +
+      "Char\022\010\n\004NONE\020\000\022\006\n\002UP\020\021\022\010\n\004DOWN\020\022\022\010\n\004LEFT" +
+      "\020\023\022\t\n\005RIGHT\020\024\022\n\n\006SELECT\020\n\022\010\n\004BACK\020\033\022\n\n\006C" +
+      "ANCEL\020\030B\021\n\017payload_variantBf\n\023com.geeksv" +
+      "ille.meshB\022ModuleConfigProtosH\003Z\"github." +
+      "com/meshtastic/go/generated\252\002\024Meshtastic" +
+      ".Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12291,7 +13179,7 @@ public final class ModuleConfigProtos {
     internal_static_ModuleConfig_AudioConfig_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModuleConfig_AudioConfig_descriptor,
-        new java.lang.String[] { "Codec2Enabled", "MicChan", "AmpPin", "PttPin", "Bitrate", });
+        new java.lang.String[] { "Codec2Enabled", "PttPin", "Bitrate", "I2SWs", "I2SSd", "I2SDin", "I2SSck", });
     internal_static_ModuleConfig_SerialConfig_descriptor =
       internal_static_ModuleConfig_descriptor.getNestedTypes().get(2);
     internal_static_ModuleConfig_SerialConfig_fieldAccessorTable = new
@@ -12303,7 +13191,7 @@ public final class ModuleConfigProtos {
     internal_static_ModuleConfig_ExternalNotificationConfig_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModuleConfig_ExternalNotificationConfig_descriptor,
-        new java.lang.String[] { "Enabled", "OutputMs", "Output", "Active", "AlertMessage", "AlertBell", "UsePwm", });
+        new java.lang.String[] { "Enabled", "OutputMs", "Output", "OutputVibra", "OutputBuzzer", "Active", "AlertMessage", "AlertMessageVibra", "AlertMessageBuzzer", "AlertBell", "AlertBellVibra", "AlertBellBuzzer", "UsePwm", "NagTimeout", });
     internal_static_ModuleConfig_StoreForwardConfig_descriptor =
       internal_static_ModuleConfig_descriptor.getNestedTypes().get(4);
     internal_static_ModuleConfig_StoreForwardConfig_fieldAccessorTable = new

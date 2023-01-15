@@ -117,6 +117,27 @@ public final class StoreAndForwardProtos {
      * <code>.StoreAndForward.Heartbeat heartbeat = 4;</code>
      */
     com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HeartbeatOrBuilder getHeartbeatOrBuilder();
+
+    /**
+     * <pre>
+     * Empty Payload
+     * </pre>
+     *
+     * <code>bool empty = 5;</code>
+     * @return Whether the empty field is set.
+     */
+    boolean hasEmpty();
+    /**
+     * <pre>
+     * Empty Payload
+     * </pre>
+     *
+     * <code>bool empty = 5;</code>
+     * @return The empty.
+     */
+    boolean getEmpty();
+
+    public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.VariantCase getVariantCase();
   }
   /**
    * <pre>
@@ -165,8 +186,8 @@ public final class StoreAndForwardProtos {
 
     /**
      * <pre>
-     * 1   - 99  = From Router
-     * 101 - 199 = From Client
+     * 001 - 063 = From Router
+     * 064 - 127 = From Client
      * </pre>
      *
      * Protobuf enum {@code StoreAndForward.RequestResponse}
@@ -232,45 +253,53 @@ public final class StoreAndForwardProtos {
       ROUTER_HISTORY(6),
       /**
        * <pre>
+       * Router is responding to a request for stats.
+       * </pre>
+       *
+       * <code>ROUTER_STATS = 7;</code>
+       */
+      ROUTER_STATS(7),
+      /**
+       * <pre>
        * Client is an in error state.
        * </pre>
        *
-       * <code>CLIENT_ERROR = 101;</code>
+       * <code>CLIENT_ERROR = 64;</code>
        */
-      CLIENT_ERROR(101),
+      CLIENT_ERROR(64),
       /**
        * <pre>
        * Client has requested a replay from the router.
        * </pre>
        *
-       * <code>CLIENT_HISTORY = 102;</code>
+       * <code>CLIENT_HISTORY = 65;</code>
        */
-      CLIENT_HISTORY(102),
+      CLIENT_HISTORY(65),
       /**
        * <pre>
        * Client has requested stats from the router.
        * </pre>
        *
-       * <code>CLIENT_STATS = 103;</code>
+       * <code>CLIENT_STATS = 66;</code>
        */
-      CLIENT_STATS(103),
+      CLIENT_STATS(66),
       /**
        * <pre>
        * Client has requested the router respond. This can work as a
        * "are you there" message.
        * </pre>
        *
-       * <code>CLIENT_PING = 104;</code>
+       * <code>CLIENT_PING = 67;</code>
        */
-      CLIENT_PING(104),
+      CLIENT_PING(67),
       /**
        * <pre>
        * The response to a "Ping"
        * </pre>
        *
-       * <code>CLIENT_PONG = 105;</code>
+       * <code>CLIENT_PONG = 68;</code>
        */
-      CLIENT_PONG(105),
+      CLIENT_PONG(68),
       /**
        * <pre>
        * Client has requested that the router abort processing the client's request
@@ -341,45 +370,53 @@ public final class StoreAndForwardProtos {
       public static final int ROUTER_HISTORY_VALUE = 6;
       /**
        * <pre>
+       * Router is responding to a request for stats.
+       * </pre>
+       *
+       * <code>ROUTER_STATS = 7;</code>
+       */
+      public static final int ROUTER_STATS_VALUE = 7;
+      /**
+       * <pre>
        * Client is an in error state.
        * </pre>
        *
-       * <code>CLIENT_ERROR = 101;</code>
+       * <code>CLIENT_ERROR = 64;</code>
        */
-      public static final int CLIENT_ERROR_VALUE = 101;
+      public static final int CLIENT_ERROR_VALUE = 64;
       /**
        * <pre>
        * Client has requested a replay from the router.
        * </pre>
        *
-       * <code>CLIENT_HISTORY = 102;</code>
+       * <code>CLIENT_HISTORY = 65;</code>
        */
-      public static final int CLIENT_HISTORY_VALUE = 102;
+      public static final int CLIENT_HISTORY_VALUE = 65;
       /**
        * <pre>
        * Client has requested stats from the router.
        * </pre>
        *
-       * <code>CLIENT_STATS = 103;</code>
+       * <code>CLIENT_STATS = 66;</code>
        */
-      public static final int CLIENT_STATS_VALUE = 103;
+      public static final int CLIENT_STATS_VALUE = 66;
       /**
        * <pre>
        * Client has requested the router respond. This can work as a
        * "are you there" message.
        * </pre>
        *
-       * <code>CLIENT_PING = 104;</code>
+       * <code>CLIENT_PING = 67;</code>
        */
-      public static final int CLIENT_PING_VALUE = 104;
+      public static final int CLIENT_PING_VALUE = 67;
       /**
        * <pre>
        * The response to a "Ping"
        * </pre>
        *
-       * <code>CLIENT_PONG = 105;</code>
+       * <code>CLIENT_PONG = 68;</code>
        */
-      public static final int CLIENT_PONG_VALUE = 105;
+      public static final int CLIENT_PONG_VALUE = 68;
       /**
        * <pre>
        * Client has requested that the router abort processing the client's request
@@ -421,11 +458,12 @@ public final class StoreAndForwardProtos {
           case 4: return ROUTER_PONG;
           case 5: return ROUTER_BUSY;
           case 6: return ROUTER_HISTORY;
-          case 101: return CLIENT_ERROR;
-          case 102: return CLIENT_HISTORY;
-          case 103: return CLIENT_STATS;
-          case 104: return CLIENT_PING;
-          case 105: return CLIENT_PONG;
+          case 7: return ROUTER_STATS;
+          case 64: return CLIENT_ERROR;
+          case 65: return CLIENT_HISTORY;
+          case 66: return CLIENT_STATS;
+          case 67: return CLIENT_PING;
+          case 68: return CLIENT_PONG;
           case 106: return CLIENT_ABORT;
           default: return null;
         }
@@ -3017,6 +3055,51 @@ public final class StoreAndForwardProtos {
 
     }
 
+    private int variantCase_ = 0;
+    private java.lang.Object variant_;
+    public enum VariantCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      STATS(2),
+      HISTORY(3),
+      HEARTBEAT(4),
+      EMPTY(5),
+      VARIANT_NOT_SET(0);
+      private final int value;
+      private VariantCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static VariantCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static VariantCase forNumber(int value) {
+        switch (value) {
+          case 2: return STATS;
+          case 3: return HISTORY;
+          case 4: return HEARTBEAT;
+          case 5: return EMPTY;
+          case 0: return VARIANT_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public VariantCase
+    getVariantCase() {
+      return VariantCase.forNumber(
+          variantCase_);
+    }
+
     public static final int RR_FIELD_NUMBER = 1;
     private int rr_ = 0;
     /**
@@ -3044,7 +3127,6 @@ public final class StoreAndForwardProtos {
     }
 
     public static final int STATS_FIELD_NUMBER = 2;
-    private com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics stats_;
     /**
      * <pre>
      * TODO: REPLACE
@@ -3055,7 +3137,7 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public boolean hasStats() {
-      return stats_ != null;
+      return variantCase_ == 2;
     }
     /**
      * <pre>
@@ -3067,7 +3149,10 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics getStats() {
-      return stats_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance() : stats_;
+      if (variantCase_ == 2) {
+         return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_;
+      }
+      return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance();
     }
     /**
      * <pre>
@@ -3078,11 +3163,13 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.StatisticsOrBuilder getStatsOrBuilder() {
-      return stats_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance() : stats_;
+      if (variantCase_ == 2) {
+         return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_;
+      }
+      return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance();
     }
 
     public static final int HISTORY_FIELD_NUMBER = 3;
-    private com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History history_;
     /**
      * <pre>
      * TODO: REPLACE
@@ -3093,7 +3180,7 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public boolean hasHistory() {
-      return history_ != null;
+      return variantCase_ == 3;
     }
     /**
      * <pre>
@@ -3105,7 +3192,10 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History getHistory() {
-      return history_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance() : history_;
+      if (variantCase_ == 3) {
+         return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_;
+      }
+      return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance();
     }
     /**
      * <pre>
@@ -3116,11 +3206,13 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HistoryOrBuilder getHistoryOrBuilder() {
-      return history_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance() : history_;
+      if (variantCase_ == 3) {
+         return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_;
+      }
+      return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance();
     }
 
     public static final int HEARTBEAT_FIELD_NUMBER = 4;
-    private com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat heartbeat_;
     /**
      * <pre>
      * TODO: REPLACE
@@ -3131,7 +3223,7 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public boolean hasHeartbeat() {
-      return heartbeat_ != null;
+      return variantCase_ == 4;
     }
     /**
      * <pre>
@@ -3143,7 +3235,10 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat getHeartbeat() {
-      return heartbeat_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance() : heartbeat_;
+      if (variantCase_ == 4) {
+         return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_;
+      }
+      return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance();
     }
     /**
      * <pre>
@@ -3154,7 +3249,39 @@ public final class StoreAndForwardProtos {
      */
     @java.lang.Override
     public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HeartbeatOrBuilder getHeartbeatOrBuilder() {
-      return heartbeat_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance() : heartbeat_;
+      if (variantCase_ == 4) {
+         return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_;
+      }
+      return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance();
+    }
+
+    public static final int EMPTY_FIELD_NUMBER = 5;
+    /**
+     * <pre>
+     * Empty Payload
+     * </pre>
+     *
+     * <code>bool empty = 5;</code>
+     * @return Whether the empty field is set.
+     */
+    @java.lang.Override
+    public boolean hasEmpty() {
+      return variantCase_ == 5;
+    }
+    /**
+     * <pre>
+     * Empty Payload
+     * </pre>
+     *
+     * <code>bool empty = 5;</code>
+     * @return The empty.
+     */
+    @java.lang.Override
+    public boolean getEmpty() {
+      if (variantCase_ == 5) {
+        return (java.lang.Boolean) variant_;
+      }
+      return false;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3174,14 +3301,18 @@ public final class StoreAndForwardProtos {
       if (rr_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.RequestResponse.UNSET.getNumber()) {
         output.writeEnum(1, rr_);
       }
-      if (stats_ != null) {
-        output.writeMessage(2, getStats());
+      if (variantCase_ == 2) {
+        output.writeMessage(2, (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_);
       }
-      if (history_ != null) {
-        output.writeMessage(3, getHistory());
+      if (variantCase_ == 3) {
+        output.writeMessage(3, (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_);
       }
-      if (heartbeat_ != null) {
-        output.writeMessage(4, getHeartbeat());
+      if (variantCase_ == 4) {
+        output.writeMessage(4, (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_);
+      }
+      if (variantCase_ == 5) {
+        output.writeBool(
+            5, (boolean)((java.lang.Boolean) variant_));
       }
       getUnknownFields().writeTo(output);
     }
@@ -3196,17 +3327,22 @@ public final class StoreAndForwardProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, rr_);
       }
-      if (stats_ != null) {
+      if (variantCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getStats());
+          .computeMessageSize(2, (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_);
       }
-      if (history_ != null) {
+      if (variantCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getHistory());
+          .computeMessageSize(3, (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_);
       }
-      if (heartbeat_ != null) {
+      if (variantCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getHeartbeat());
+          .computeMessageSize(4, (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_);
+      }
+      if (variantCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(
+              5, (boolean)((java.lang.Boolean) variant_));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3224,20 +3360,26 @@ public final class StoreAndForwardProtos {
       com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward other = (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward) obj;
 
       if (rr_ != other.rr_) return false;
-      if (hasStats() != other.hasStats()) return false;
-      if (hasStats()) {
-        if (!getStats()
-            .equals(other.getStats())) return false;
-      }
-      if (hasHistory() != other.hasHistory()) return false;
-      if (hasHistory()) {
-        if (!getHistory()
-            .equals(other.getHistory())) return false;
-      }
-      if (hasHeartbeat() != other.hasHeartbeat()) return false;
-      if (hasHeartbeat()) {
-        if (!getHeartbeat()
-            .equals(other.getHeartbeat())) return false;
+      if (!getVariantCase().equals(other.getVariantCase())) return false;
+      switch (variantCase_) {
+        case 2:
+          if (!getStats()
+              .equals(other.getStats())) return false;
+          break;
+        case 3:
+          if (!getHistory()
+              .equals(other.getHistory())) return false;
+          break;
+        case 4:
+          if (!getHeartbeat()
+              .equals(other.getHeartbeat())) return false;
+          break;
+        case 5:
+          if (getEmpty()
+              != other.getEmpty()) return false;
+          break;
+        case 0:
+        default:
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -3252,17 +3394,26 @@ public final class StoreAndForwardProtos {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + RR_FIELD_NUMBER;
       hash = (53 * hash) + rr_;
-      if (hasStats()) {
-        hash = (37 * hash) + STATS_FIELD_NUMBER;
-        hash = (53 * hash) + getStats().hashCode();
-      }
-      if (hasHistory()) {
-        hash = (37 * hash) + HISTORY_FIELD_NUMBER;
-        hash = (53 * hash) + getHistory().hashCode();
-      }
-      if (hasHeartbeat()) {
-        hash = (37 * hash) + HEARTBEAT_FIELD_NUMBER;
-        hash = (53 * hash) + getHeartbeat().hashCode();
+      switch (variantCase_) {
+        case 2:
+          hash = (37 * hash) + STATS_FIELD_NUMBER;
+          hash = (53 * hash) + getStats().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + HISTORY_FIELD_NUMBER;
+          hash = (53 * hash) + getHistory().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + HEARTBEAT_FIELD_NUMBER;
+          hash = (53 * hash) + getHeartbeat().hashCode();
+          break;
+        case 5:
+          hash = (37 * hash) + EMPTY_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+              getEmpty());
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -3398,21 +3549,17 @@ public final class StoreAndForwardProtos {
         super.clear();
         bitField0_ = 0;
         rr_ = 0;
-        stats_ = null;
         if (statsBuilder_ != null) {
-          statsBuilder_.dispose();
-          statsBuilder_ = null;
+          statsBuilder_.clear();
         }
-        history_ = null;
         if (historyBuilder_ != null) {
-          historyBuilder_.dispose();
-          historyBuilder_ = null;
+          historyBuilder_.clear();
         }
-        heartbeat_ = null;
         if (heartbeatBuilder_ != null) {
-          heartbeatBuilder_.dispose();
-          heartbeatBuilder_ = null;
+          heartbeatBuilder_.clear();
         }
+        variantCase_ = 0;
+        variant_ = null;
         return this;
       }
 
@@ -3440,6 +3587,7 @@ public final class StoreAndForwardProtos {
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward buildPartial() {
         com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward result = new com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward(this);
         if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
         onBuilt();
         return result;
       }
@@ -3449,20 +3597,22 @@ public final class StoreAndForwardProtos {
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.rr_ = rr_;
         }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.stats_ = statsBuilder_ == null
-              ? stats_
-              : statsBuilder_.build();
+      }
+
+      private void buildPartialOneofs(com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward result) {
+        result.variantCase_ = variantCase_;
+        result.variant_ = this.variant_;
+        if (variantCase_ == 2 &&
+            statsBuilder_ != null) {
+          result.variant_ = statsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.history_ = historyBuilder_ == null
-              ? history_
-              : historyBuilder_.build();
+        if (variantCase_ == 3 &&
+            historyBuilder_ != null) {
+          result.variant_ = historyBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.heartbeat_ = heartbeatBuilder_ == null
-              ? heartbeat_
-              : heartbeatBuilder_.build();
+        if (variantCase_ == 4 &&
+            heartbeatBuilder_ != null) {
+          result.variant_ = heartbeatBuilder_.build();
         }
       }
 
@@ -3513,14 +3663,26 @@ public final class StoreAndForwardProtos {
         if (other.rr_ != 0) {
           setRrValue(other.getRrValue());
         }
-        if (other.hasStats()) {
-          mergeStats(other.getStats());
-        }
-        if (other.hasHistory()) {
-          mergeHistory(other.getHistory());
-        }
-        if (other.hasHeartbeat()) {
-          mergeHeartbeat(other.getHeartbeat());
+        switch (other.getVariantCase()) {
+          case STATS: {
+            mergeStats(other.getStats());
+            break;
+          }
+          case HISTORY: {
+            mergeHistory(other.getHistory());
+            break;
+          }
+          case HEARTBEAT: {
+            mergeHeartbeat(other.getHeartbeat());
+            break;
+          }
+          case EMPTY: {
+            setEmpty(other.getEmpty());
+            break;
+          }
+          case VARIANT_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -3557,23 +3719,28 @@ public final class StoreAndForwardProtos {
                 input.readMessage(
                     getStatsFieldBuilder().getBuilder(),
                     extensionRegistry);
-                bitField0_ |= 0x00000002;
+                variantCase_ = 2;
                 break;
               } // case 18
               case 26: {
                 input.readMessage(
                     getHistoryFieldBuilder().getBuilder(),
                     extensionRegistry);
-                bitField0_ |= 0x00000004;
+                variantCase_ = 3;
                 break;
               } // case 26
               case 34: {
                 input.readMessage(
                     getHeartbeatFieldBuilder().getBuilder(),
                     extensionRegistry);
-                bitField0_ |= 0x00000008;
+                variantCase_ = 4;
                 break;
               } // case 34
+              case 40: {
+                variant_ = input.readBool();
+                variantCase_ = 5;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3589,6 +3756,21 @@ public final class StoreAndForwardProtos {
         } // finally
         return this;
       }
+      private int variantCase_ = 0;
+      private java.lang.Object variant_;
+      public VariantCase
+          getVariantCase() {
+        return VariantCase.forNumber(
+            variantCase_);
+      }
+
+      public Builder clearVariant() {
+        variantCase_ = 0;
+        variant_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
       private int rr_ = 0;
@@ -3664,7 +3846,6 @@ public final class StoreAndForwardProtos {
         return this;
       }
 
-      private com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.StatisticsOrBuilder> statsBuilder_;
       /**
@@ -3675,8 +3856,9 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Statistics stats = 2;</code>
        * @return Whether the stats field is set.
        */
+      @java.lang.Override
       public boolean hasStats() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return variantCase_ == 2;
       }
       /**
        * <pre>
@@ -3686,11 +3868,18 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Statistics stats = 2;</code>
        * @return The stats.
        */
+      @java.lang.Override
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance() : stats_;
+          if (variantCase_ == 2) {
+            return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_;
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance();
         } else {
-          return statsBuilder_.getMessage();
+          if (variantCase_ == 2) {
+            return statsBuilder_.getMessage();
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance();
         }
       }
       /**
@@ -3705,12 +3894,12 @@ public final class StoreAndForwardProtos {
           if (value == null) {
             throw new NullPointerException();
           }
-          stats_ = value;
+          variant_ = value;
+          onChanged();
         } else {
           statsBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
+        variantCase_ = 2;
         return this;
       }
       /**
@@ -3723,12 +3912,12 @@ public final class StoreAndForwardProtos {
       public Builder setStats(
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.Builder builderForValue) {
         if (statsBuilder_ == null) {
-          stats_ = builderForValue.build();
+          variant_ = builderForValue.build();
+          onChanged();
         } else {
           statsBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
+        variantCase_ = 2;
         return this;
       }
       /**
@@ -3740,18 +3929,22 @@ public final class StoreAndForwardProtos {
        */
       public Builder mergeStats(com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics value) {
         if (statsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-            stats_ != null &&
-            stats_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance()) {
-            getStatsBuilder().mergeFrom(value);
+          if (variantCase_ == 2 &&
+              variant_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance()) {
+            variant_ = com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.newBuilder((com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_)
+                .mergeFrom(value).buildPartial();
           } else {
-            stats_ = value;
+            variant_ = value;
           }
+          onChanged();
         } else {
-          statsBuilder_.mergeFrom(value);
+          if (variantCase_ == 2) {
+            statsBuilder_.mergeFrom(value);
+          } else {
+            statsBuilder_.setMessage(value);
+          }
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
+        variantCase_ = 2;
         return this;
       }
       /**
@@ -3762,13 +3955,19 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Statistics stats = 2;</code>
        */
       public Builder clearStats() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        stats_ = null;
-        if (statsBuilder_ != null) {
-          statsBuilder_.dispose();
-          statsBuilder_ = null;
+        if (statsBuilder_ == null) {
+          if (variantCase_ == 2) {
+            variantCase_ = 0;
+            variant_ = null;
+            onChanged();
+          }
+        } else {
+          if (variantCase_ == 2) {
+            variantCase_ = 0;
+            variant_ = null;
+          }
+          statsBuilder_.clear();
         }
-        onChanged();
         return this;
       }
       /**
@@ -3779,8 +3978,6 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Statistics stats = 2;</code>
        */
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.Builder getStatsBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
         return getStatsFieldBuilder().getBuilder();
       }
       /**
@@ -3790,12 +3987,15 @@ public final class StoreAndForwardProtos {
        *
        * <code>.StoreAndForward.Statistics stats = 2;</code>
        */
+      @java.lang.Override
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.StatisticsOrBuilder getStatsOrBuilder() {
-        if (statsBuilder_ != null) {
+        if ((variantCase_ == 2) && (statsBuilder_ != null)) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
-          return stats_ == null ?
-              com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance() : stats_;
+          if (variantCase_ == 2) {
+            return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_;
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance();
         }
       }
       /**
@@ -3809,17 +4009,21 @@ public final class StoreAndForwardProtos {
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.StatisticsOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
+          if (!(variantCase_ == 2)) {
+            variant_ = com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.getDefaultInstance();
+          }
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.StatisticsOrBuilder>(
-                  getStats(),
+                  (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Statistics) variant_,
                   getParentForChildren(),
                   isClean());
-          stats_ = null;
+          variant_ = null;
         }
+        variantCase_ = 2;
+        onChanged();
         return statsBuilder_;
       }
 
-      private com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History history_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HistoryOrBuilder> historyBuilder_;
       /**
@@ -3830,8 +4034,9 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.History history = 3;</code>
        * @return Whether the history field is set.
        */
+      @java.lang.Override
       public boolean hasHistory() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return variantCase_ == 3;
       }
       /**
        * <pre>
@@ -3841,11 +4046,18 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.History history = 3;</code>
        * @return The history.
        */
+      @java.lang.Override
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History getHistory() {
         if (historyBuilder_ == null) {
-          return history_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance() : history_;
+          if (variantCase_ == 3) {
+            return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_;
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance();
         } else {
-          return historyBuilder_.getMessage();
+          if (variantCase_ == 3) {
+            return historyBuilder_.getMessage();
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance();
         }
       }
       /**
@@ -3860,12 +4072,12 @@ public final class StoreAndForwardProtos {
           if (value == null) {
             throw new NullPointerException();
           }
-          history_ = value;
+          variant_ = value;
+          onChanged();
         } else {
           historyBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
+        variantCase_ = 3;
         return this;
       }
       /**
@@ -3878,12 +4090,12 @@ public final class StoreAndForwardProtos {
       public Builder setHistory(
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.Builder builderForValue) {
         if (historyBuilder_ == null) {
-          history_ = builderForValue.build();
+          variant_ = builderForValue.build();
+          onChanged();
         } else {
           historyBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
+        variantCase_ = 3;
         return this;
       }
       /**
@@ -3895,18 +4107,22 @@ public final class StoreAndForwardProtos {
        */
       public Builder mergeHistory(com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History value) {
         if (historyBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0) &&
-            history_ != null &&
-            history_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance()) {
-            getHistoryBuilder().mergeFrom(value);
+          if (variantCase_ == 3 &&
+              variant_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance()) {
+            variant_ = com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.newBuilder((com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_)
+                .mergeFrom(value).buildPartial();
           } else {
-            history_ = value;
+            variant_ = value;
           }
+          onChanged();
         } else {
-          historyBuilder_.mergeFrom(value);
+          if (variantCase_ == 3) {
+            historyBuilder_.mergeFrom(value);
+          } else {
+            historyBuilder_.setMessage(value);
+          }
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
+        variantCase_ = 3;
         return this;
       }
       /**
@@ -3917,13 +4133,19 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.History history = 3;</code>
        */
       public Builder clearHistory() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        history_ = null;
-        if (historyBuilder_ != null) {
-          historyBuilder_.dispose();
-          historyBuilder_ = null;
+        if (historyBuilder_ == null) {
+          if (variantCase_ == 3) {
+            variantCase_ = 0;
+            variant_ = null;
+            onChanged();
+          }
+        } else {
+          if (variantCase_ == 3) {
+            variantCase_ = 0;
+            variant_ = null;
+          }
+          historyBuilder_.clear();
         }
-        onChanged();
         return this;
       }
       /**
@@ -3934,8 +4156,6 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.History history = 3;</code>
        */
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.Builder getHistoryBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
         return getHistoryFieldBuilder().getBuilder();
       }
       /**
@@ -3945,12 +4165,15 @@ public final class StoreAndForwardProtos {
        *
        * <code>.StoreAndForward.History history = 3;</code>
        */
+      @java.lang.Override
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HistoryOrBuilder getHistoryOrBuilder() {
-        if (historyBuilder_ != null) {
+        if ((variantCase_ == 3) && (historyBuilder_ != null)) {
           return historyBuilder_.getMessageOrBuilder();
         } else {
-          return history_ == null ?
-              com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance() : history_;
+          if (variantCase_ == 3) {
+            return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_;
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance();
         }
       }
       /**
@@ -3964,17 +4187,21 @@ public final class StoreAndForwardProtos {
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HistoryOrBuilder> 
           getHistoryFieldBuilder() {
         if (historyBuilder_ == null) {
+          if (!(variantCase_ == 3)) {
+            variant_ = com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.getDefaultInstance();
+          }
           historyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HistoryOrBuilder>(
-                  getHistory(),
+                  (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.History) variant_,
                   getParentForChildren(),
                   isClean());
-          history_ = null;
+          variant_ = null;
         }
+        variantCase_ = 3;
+        onChanged();
         return historyBuilder_;
       }
 
-      private com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat heartbeat_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HeartbeatOrBuilder> heartbeatBuilder_;
       /**
@@ -3985,8 +4212,9 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Heartbeat heartbeat = 4;</code>
        * @return Whether the heartbeat field is set.
        */
+      @java.lang.Override
       public boolean hasHeartbeat() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return variantCase_ == 4;
       }
       /**
        * <pre>
@@ -3996,11 +4224,18 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Heartbeat heartbeat = 4;</code>
        * @return The heartbeat.
        */
+      @java.lang.Override
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat getHeartbeat() {
         if (heartbeatBuilder_ == null) {
-          return heartbeat_ == null ? com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance() : heartbeat_;
+          if (variantCase_ == 4) {
+            return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_;
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance();
         } else {
-          return heartbeatBuilder_.getMessage();
+          if (variantCase_ == 4) {
+            return heartbeatBuilder_.getMessage();
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance();
         }
       }
       /**
@@ -4015,12 +4250,12 @@ public final class StoreAndForwardProtos {
           if (value == null) {
             throw new NullPointerException();
           }
-          heartbeat_ = value;
+          variant_ = value;
+          onChanged();
         } else {
           heartbeatBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
-        onChanged();
+        variantCase_ = 4;
         return this;
       }
       /**
@@ -4033,12 +4268,12 @@ public final class StoreAndForwardProtos {
       public Builder setHeartbeat(
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.Builder builderForValue) {
         if (heartbeatBuilder_ == null) {
-          heartbeat_ = builderForValue.build();
+          variant_ = builderForValue.build();
+          onChanged();
         } else {
           heartbeatBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
-        onChanged();
+        variantCase_ = 4;
         return this;
       }
       /**
@@ -4050,18 +4285,22 @@ public final class StoreAndForwardProtos {
        */
       public Builder mergeHeartbeat(com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat value) {
         if (heartbeatBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0) &&
-            heartbeat_ != null &&
-            heartbeat_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance()) {
-            getHeartbeatBuilder().mergeFrom(value);
+          if (variantCase_ == 4 &&
+              variant_ != com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance()) {
+            variant_ = com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.newBuilder((com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_)
+                .mergeFrom(value).buildPartial();
           } else {
-            heartbeat_ = value;
+            variant_ = value;
           }
+          onChanged();
         } else {
-          heartbeatBuilder_.mergeFrom(value);
+          if (variantCase_ == 4) {
+            heartbeatBuilder_.mergeFrom(value);
+          } else {
+            heartbeatBuilder_.setMessage(value);
+          }
         }
-        bitField0_ |= 0x00000008;
-        onChanged();
+        variantCase_ = 4;
         return this;
       }
       /**
@@ -4072,13 +4311,19 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Heartbeat heartbeat = 4;</code>
        */
       public Builder clearHeartbeat() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        heartbeat_ = null;
-        if (heartbeatBuilder_ != null) {
-          heartbeatBuilder_.dispose();
-          heartbeatBuilder_ = null;
+        if (heartbeatBuilder_ == null) {
+          if (variantCase_ == 4) {
+            variantCase_ = 0;
+            variant_ = null;
+            onChanged();
+          }
+        } else {
+          if (variantCase_ == 4) {
+            variantCase_ = 0;
+            variant_ = null;
+          }
+          heartbeatBuilder_.clear();
         }
-        onChanged();
         return this;
       }
       /**
@@ -4089,8 +4334,6 @@ public final class StoreAndForwardProtos {
        * <code>.StoreAndForward.Heartbeat heartbeat = 4;</code>
        */
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.Builder getHeartbeatBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
         return getHeartbeatFieldBuilder().getBuilder();
       }
       /**
@@ -4100,12 +4343,15 @@ public final class StoreAndForwardProtos {
        *
        * <code>.StoreAndForward.Heartbeat heartbeat = 4;</code>
        */
+      @java.lang.Override
       public com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HeartbeatOrBuilder getHeartbeatOrBuilder() {
-        if (heartbeatBuilder_ != null) {
+        if ((variantCase_ == 4) && (heartbeatBuilder_ != null)) {
           return heartbeatBuilder_.getMessageOrBuilder();
         } else {
-          return heartbeat_ == null ?
-              com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance() : heartbeat_;
+          if (variantCase_ == 4) {
+            return (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_;
+          }
+          return com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance();
         }
       }
       /**
@@ -4119,14 +4365,77 @@ public final class StoreAndForwardProtos {
           com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HeartbeatOrBuilder> 
           getHeartbeatFieldBuilder() {
         if (heartbeatBuilder_ == null) {
+          if (!(variantCase_ == 4)) {
+            variant_ = com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.getDefaultInstance();
+          }
           heartbeatBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat.Builder, com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.HeartbeatOrBuilder>(
-                  getHeartbeat(),
+                  (com.geeksville.mesh.StoreAndForwardProtos.StoreAndForward.Heartbeat) variant_,
                   getParentForChildren(),
                   isClean());
-          heartbeat_ = null;
+          variant_ = null;
         }
+        variantCase_ = 4;
+        onChanged();
         return heartbeatBuilder_;
+      }
+
+      /**
+       * <pre>
+       * Empty Payload
+       * </pre>
+       *
+       * <code>bool empty = 5;</code>
+       * @return Whether the empty field is set.
+       */
+      public boolean hasEmpty() {
+        return variantCase_ == 5;
+      }
+      /**
+       * <pre>
+       * Empty Payload
+       * </pre>
+       *
+       * <code>bool empty = 5;</code>
+       * @return The empty.
+       */
+      public boolean getEmpty() {
+        if (variantCase_ == 5) {
+          return (java.lang.Boolean) variant_;
+        }
+        return false;
+      }
+      /**
+       * <pre>
+       * Empty Payload
+       * </pre>
+       *
+       * <code>bool empty = 5;</code>
+       * @param value The empty to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmpty(boolean value) {
+        
+        variantCase_ = 5;
+        variant_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Empty Payload
+       * </pre>
+       *
+       * <code>bool empty = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmpty() {
+        if (variantCase_ == 5) {
+          variantCase_ = 0;
+          variant_ = null;
+          onChanged();
+        }
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4221,29 +4530,31 @@ public final class StoreAndForwardProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022storeforward.proto\"\212\006\n\017StoreAndForward" +
+      "\n\022storeforward.proto\"\276\006\n\017StoreAndForward" +
       "\022,\n\002rr\030\001 \001(\0162 .StoreAndForward.RequestRe" +
-      "sponse\022*\n\005stats\030\002 \001(\0132\033.StoreAndForward." +
-      "Statistics\022)\n\007history\030\003 \001(\0132\030.StoreAndFo" +
-      "rward.History\022-\n\theartbeat\030\004 \001(\0132\032.Store" +
-      "AndForward.Heartbeat\032\315\001\n\nStatistics\022\026\n\016m" +
-      "essages_total\030\001 \001(\r\022\026\n\016messages_saved\030\002 " +
-      "\001(\r\022\024\n\014messages_max\030\003 \001(\r\022\017\n\007up_time\030\004 \001" +
-      "(\r\022\020\n\010requests\030\005 \001(\r\022\030\n\020requests_history" +
-      "\030\006 \001(\r\022\021\n\theartbeat\030\007 \001(\010\022\022\n\nreturn_max\030" +
-      "\010 \001(\r\022\025\n\rreturn_window\030\t \001(\r\032I\n\007History\022" +
-      "\030\n\020history_messages\030\001 \001(\r\022\016\n\006window\030\002 \001(" +
-      "\r\022\024\n\014last_request\030\003 \001(\r\032.\n\tHeartbeat\022\016\n\006" +
-      "period\030\001 \001(\r\022\021\n\tsecondary\030\002 \001(\r\"\367\001\n\017Requ" +
-      "estResponse\022\t\n\005UNSET\020\000\022\020\n\014ROUTER_ERROR\020\001" +
-      "\022\024\n\020ROUTER_HEARTBEAT\020\002\022\017\n\013ROUTER_PING\020\003\022" +
-      "\017\n\013ROUTER_PONG\020\004\022\017\n\013ROUTER_BUSY\020\005\022\022\n\016ROU" +
-      "TER_HISTORY\020\006\022\020\n\014CLIENT_ERROR\020e\022\022\n\016CLIEN" +
-      "T_HISTORY\020f\022\020\n\014CLIENT_STATS\020g\022\017\n\013CLIENT_" +
-      "PING\020h\022\017\n\013CLIENT_PONG\020i\022\020\n\014CLIENT_ABORT\020" +
-      "jBR\n\023com.geeksville.meshB\025StoreAndForwar" +
-      "dProtosH\003Z\"github.com/meshtastic/go/gene" +
-      "ratedb\006proto3"
+      "sponse\022,\n\005stats\030\002 \001(\0132\033.StoreAndForward." +
+      "StatisticsH\000\022+\n\007history\030\003 \001(\0132\030.StoreAnd" +
+      "Forward.HistoryH\000\022/\n\theartbeat\030\004 \001(\0132\032.S" +
+      "toreAndForward.HeartbeatH\000\022\017\n\005empty\030\005 \001(" +
+      "\010H\000\032\315\001\n\nStatistics\022\026\n\016messages_total\030\001 \001" +
+      "(\r\022\026\n\016messages_saved\030\002 \001(\r\022\024\n\014messages_m" +
+      "ax\030\003 \001(\r\022\017\n\007up_time\030\004 \001(\r\022\020\n\010requests\030\005 " +
+      "\001(\r\022\030\n\020requests_history\030\006 \001(\r\022\021\n\theartbe" +
+      "at\030\007 \001(\010\022\022\n\nreturn_max\030\010 \001(\r\022\025\n\rreturn_w" +
+      "indow\030\t \001(\r\032I\n\007History\022\030\n\020history_messag" +
+      "es\030\001 \001(\r\022\016\n\006window\030\002 \001(\r\022\024\n\014last_request" +
+      "\030\003 \001(\r\032.\n\tHeartbeat\022\016\n\006period\030\001 \001(\r\022\021\n\ts" +
+      "econdary\030\002 \001(\r\"\211\002\n\017RequestResponse\022\t\n\005UN" +
+      "SET\020\000\022\020\n\014ROUTER_ERROR\020\001\022\024\n\020ROUTER_HEARTB" +
+      "EAT\020\002\022\017\n\013ROUTER_PING\020\003\022\017\n\013ROUTER_PONG\020\004\022" +
+      "\017\n\013ROUTER_BUSY\020\005\022\022\n\016ROUTER_HISTORY\020\006\022\020\n\014" +
+      "ROUTER_STATS\020\007\022\020\n\014CLIENT_ERROR\020@\022\022\n\016CLIE" +
+      "NT_HISTORY\020A\022\020\n\014CLIENT_STATS\020B\022\017\n\013CLIENT" +
+      "_PING\020C\022\017\n\013CLIENT_PONG\020D\022\020\n\014CLIENT_ABORT" +
+      "\020jB\t\n\007variantBi\n\023com.geeksville.meshB\025St" +
+      "oreAndForwardProtosH\003Z\"github.com/meshta" +
+      "stic/go/generated\252\002\024Meshtastic.Protobufs" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4254,7 +4565,7 @@ public final class StoreAndForwardProtos {
     internal_static_StoreAndForward_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StoreAndForward_descriptor,
-        new java.lang.String[] { "Rr", "Stats", "History", "Heartbeat", });
+        new java.lang.String[] { "Rr", "Stats", "History", "Heartbeat", "Empty", "Variant", });
     internal_static_StoreAndForward_Statistics_descriptor =
       internal_static_StoreAndForward_descriptor.getNestedTypes().get(0);
     internal_static_StoreAndForward_Statistics_fieldAccessorTable = new

@@ -6410,9 +6410,10 @@ public final class AdminProtos {
       "IF_CONFIG\020\002\022\027\n\023STOREFORWARD_CONFIG\020\003\022\024\n\020" +
       "RANGETEST_CONFIG\020\004\022\024\n\020TELEMETRY_CONFIG\020\005" +
       "\022\024\n\020CANNEDMSG_CONFIG\020\006\022\020\n\014AUDIO_CONFIG\020\007" +
-      "B\021\n\017payload_variantBH\n\023com.geeksville.me" +
+      "B\021\n\017payload_variantB_\n\023com.geeksville.me" +
       "shB\013AdminProtosH\003Z\"github.com/meshtastic" +
-      "/go/generatedb\006proto3"
+      "/go/generated\252\002\024Meshtastic.Protobufsb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

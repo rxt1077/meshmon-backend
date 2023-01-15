@@ -2,6 +2,7 @@
   (:require [serial.util :as util]
             [serial.core :as serial]
             [clojure.java [io :as io]]
+            [clojure.core.async :refer [go-loop <! timeout]]
             [taoensso.timbre :as timbre :refer [trace debug]]
             [meshmon-backend.pb :as pb]
             [meshmon-backend.db :as db]))
@@ -39,6 +40,18 @@
 (defn pb-size [pkt]
   "Gives the size of the protobuf from the second and third bytes of a packet."
   (+ (bit-shift-left (bit-and 0xff (nth pkt 2)) 8) (bit-and 0xff (nth pkt 3))))
+
+;; this is an empty ToRadio packet used to keep the device awake
+(def heatbeat-packet (pb/clj-map->to-radio {}))
+(defn heartbeat-timer [port interval]
+  "Uses core.async to run in the background sending a heartbeat every
+  `interval` seconds"
+  (go-loop []
+    (do
+      (debug "Sending heartbeat")
+      (serial/write port (proto-map->stream heatbeat-packet))
+      (<! (timeout (* interval 1000))) (recur))))
+
 
 (def packet (atom []))
 (defn fsm!
@@ -100,19 +113,30 @@
               (reset! packet [])
               (byte-array proto)))))))))
 
-(defn input-handler [^java.io.InputStream is ds]
+(defn input-handler [^java.io.InputStream is port ds]
   "Called when serial input is available, reads it one byte at a time and sends
   it to the FSM. We do this one byte at a time, because if we read into a
   buffer it fills with 0x00 bytes if nothing is available.
-  
+
+  PowerConfig is used to setup a heartbeat timer.  
   MeshPackets are sent to be written to the DB."
   (when-let [serial-pkt (fsm! (unchecked-byte (.read is)))]
-    (when-let [mesh-packet (-> serial-pkt
-                               pb/bytes->from-radio
-                               pb/from-radio->mesh-packet)]
+    (let [from-radio (pb/bytes->from-radio serial-pkt)]
       (do
-        (debug "Recieved from device:" mesh-packet)
-        (db/save-mesh-packet! ds mesh-packet)))))
+        (debug "Recieved from device:" from-radio)
+        (cond
+          ;; if we get a power config, set the heartbeat to ls-secs / 2
+          (:config from-radio)
+          (when-let [power (:power (:config from-radio))]
+            (when-let [ls-secs (:ls-secs power)]
+              (let [interval (/ ls-secs 2)]
+                (do
+                  (debug "Sending heartbeats every" interval "seconds")
+                  (heartbeat-timer port interval)))))
+
+          ;; otherwise if we get a mesh-packet save it
+          (:packet from-radio)
+          (db/save-mesh-packet! ds (:packet from-radio)))))))
 
 (defn open-first-working-port
   "Goes through all possible ports that are either ttyUSB or ttyACM and
@@ -143,7 +167,7 @@
   (let [port (if port-name (serial/open port-name) (open-first-working-port))]
     (if port
       (do
-        (serial/listen! port #(input-handler % ds))
+        (serial/listen! port #(input-handler % port ds))
         (serial/write port (proto-map->stream start-packet))
         port)
       (println "No serial ports found. Not recording."))))

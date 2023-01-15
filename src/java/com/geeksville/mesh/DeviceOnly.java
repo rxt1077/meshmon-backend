@@ -4805,9 +4805,10 @@ public final class DeviceOnly {
       "m_icon_bits\030\003 \001(\014\022\036\n\010oem_font\030\004 \001(\0162\014.Sc" +
       "reenFonts\022\020\n\010oem_text\030\005 \001(\t\022\023\n\013oem_aes_k" +
       "ey\030\006 \001(\014*>\n\013ScreenFonts\022\016\n\nFONT_SMALL\020\000\022" +
-      "\017\n\013FONT_MEDIUM\020\001\022\016\n\nFONT_LARGE\020\002BG\n\023com." +
+      "\017\n\013FONT_MEDIUM\020\001\022\016\n\nFONT_LARGE\020\002B^\n\023com." +
       "geeksville.meshB\nDeviceOnlyH\003Z\"github.co" +
-      "m/meshtastic/go/generatedb\006proto3"
+      "m/meshtastic/go/generated\252\002\024Meshtastic.P" +
+      "rotobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

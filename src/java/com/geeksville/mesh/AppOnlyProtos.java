@@ -1200,9 +1200,10 @@ public final class AppOnlyProtos {
       "\n\rapponly.proto\032\rchannel.proto\032\014config.p" +
       "roto\"Y\n\nChannelSet\022\"\n\010settings\030\001 \003(\0132\020.C" +
       "hannelSettings\022\'\n\013lora_config\030\002 \001(\0132\022.Co" +
-      "nfig.LoRaConfigBJ\n\023com.geeksville.meshB\r" +
+      "nfig.LoRaConfigBa\n\023com.geeksville.meshB\r" +
       "AppOnlyProtosH\003Z\"github.com/meshtastic/g" +
-      "o/generatedb\006proto3"
+      "o/generated\252\002\024Meshtastic.Protobufsb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

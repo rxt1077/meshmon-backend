@@ -158,6 +158,14 @@ public final class MeshProtos {
     TLORA_V2_1_1P8(15),
     /**
      * <pre>
+     * TODO: REPLACE
+     * </pre>
+     *
+     * <code>TLORA_T3_S3 = 16;</code>
+     */
+    TLORA_T3_S3(16),
+    /**
+     * <pre>
      * B&amp;Q Consulting Station Edition G1: https://uniteng.com/wiki/doku.php?id=meshtastic:station
      * </pre>
      *
@@ -411,6 +419,14 @@ public final class MeshProtos {
     public static final int TLORA_V2_1_1P8_VALUE = 15;
     /**
      * <pre>
+     * TODO: REPLACE
+     * </pre>
+     *
+     * <code>TLORA_T3_S3 = 16;</code>
+     */
+    public static final int TLORA_T3_S3_VALUE = 16;
+    /**
+     * <pre>
      * B&amp;Q Consulting Station Edition G1: https://uniteng.com/wiki/doku.php?id=meshtastic:station
      * </pre>
      *
@@ -571,6 +587,7 @@ public final class MeshProtos {
         case 13: return RAK11200;
         case 14: return NANO_G1;
         case 15: return TLORA_V2_1_1P8;
+        case 16: return TLORA_T3_S3;
         case 25: return STATION_G1;
         case 32: return LORA_RELAY_V1;
         case 33: return NRF52840DK;
@@ -6348,6 +6365,14 @@ public final class MeshProtos {
       NO_RESPONSE(8),
       /**
        * <pre>
+       * Cannot send currently because duty cycle regulations will be violated.
+       * </pre>
+       *
+       * <code>DUTY_CYCLE_LIMIT = 9;</code>
+       */
+      DUTY_CYCLE_LIMIT(9),
+      /**
+       * <pre>
        * The application layer service on the remote node received your request, but considered your request somehow invalid
        * </pre>
        *
@@ -6441,6 +6466,14 @@ public final class MeshProtos {
       public static final int NO_RESPONSE_VALUE = 8;
       /**
        * <pre>
+       * Cannot send currently because duty cycle regulations will be violated.
+       * </pre>
+       *
+       * <code>DUTY_CYCLE_LIMIT = 9;</code>
+       */
+      public static final int DUTY_CYCLE_LIMIT_VALUE = 9;
+      /**
+       * <pre>
        * The application layer service on the remote node received your request, but considered your request somehow invalid
        * </pre>
        *
@@ -6491,6 +6524,7 @@ public final class MeshProtos {
           case 6: return NO_CHANNEL;
           case 7: return TOO_LARGE;
           case 8: return NO_RESPONSE;
+          case 9: return DUTY_CYCLE_LIMIT;
           case 32: return BAD_REQUEST;
           case 33: return NOT_AUTHORIZED;
           default: return null;
@@ -22731,87 +22765,88 @@ public final class MeshProtos {
       "er\022\n\n\002id\030\001 \001(\t\022\021\n\tlong_name\030\002 \001(\t\022\022\n\nsho" +
       "rt_name\030\003 \001(\t\022\017\n\007macaddr\030\004 \001(\014\022 \n\010hw_mod" +
       "el\030\005 \001(\0162\016.HardwareModel\022\023\n\013is_licensed\030" +
-      "\006 \001(\010\"\037\n\016RouteDiscovery\022\r\n\005route\030\001 \003(\007\"\305" +
+      "\006 \001(\010\"\037\n\016RouteDiscovery\022\r\n\005route\030\001 \003(\007\"\333" +
       "\002\n\007Routing\022(\n\rroute_request\030\001 \001(\0132\017.Rout" +
       "eDiscoveryH\000\022&\n\013route_reply\030\002 \001(\0132\017.Rout" +
       "eDiscoveryH\000\022&\n\014error_reason\030\003 \001(\0162\016.Rou" +
-      "ting.ErrorH\000\"\264\001\n\005Error\022\010\n\004NONE\020\000\022\014\n\010NO_R" +
+      "ting.ErrorH\000\"\312\001\n\005Error\022\010\n\004NONE\020\000\022\014\n\010NO_R" +
       "OUTE\020\001\022\013\n\007GOT_NAK\020\002\022\013\n\007TIMEOUT\020\003\022\020\n\014NO_I" +
       "NTERFACE\020\004\022\022\n\016MAX_RETRANSMIT\020\005\022\016\n\nNO_CHA" +
-      "NNEL\020\006\022\r\n\tTOO_LARGE\020\007\022\017\n\013NO_RESPONSE\020\010\022\017" +
-      "\n\013BAD_REQUEST\020 \022\022\n\016NOT_AUTHORIZED\020!B\t\n\007v" +
-      "ariant\"\234\001\n\004Data\022\031\n\007portnum\030\001 \001(\0162\010.PortN" +
-      "um\022\017\n\007payload\030\002 \001(\014\022\025\n\rwant_response\030\003 \001" +
-      "(\010\022\014\n\004dest\030\004 \001(\007\022\016\n\006source\030\005 \001(\007\022\022\n\nrequ" +
-      "est_id\030\006 \001(\007\022\020\n\010reply_id\030\007 \001(\007\022\r\n\005emoji\030" +
-      "\010 \001(\007\"\202\001\n\010Waypoint\022\n\n\002id\030\001 \001(\r\022\022\n\nlatitu" +
-      "de_i\030\002 \001(\017\022\023\n\013longitude_i\030\003 \001(\017\022\016\n\006expir" +
-      "e\030\004 \001(\r\022\016\n\006locked\030\005 \001(\010\022\014\n\004name\030\006 \001(\t\022\023\n" +
-      "\013description\030\007 \001(\t\"\313\003\n\nMeshPacket\022\014\n\004fro" +
-      "m\030\001 \001(\007\022\n\n\002to\030\002 \001(\007\022\017\n\007channel\030\003 \001(\r\022\030\n\007" +
-      "decoded\030\004 \001(\0132\005.DataH\000\022\023\n\tencrypted\030\005 \001(" +
-      "\014H\000\022\n\n\002id\030\006 \001(\007\022\017\n\007rx_time\030\007 \001(\007\022\016\n\006rx_s" +
-      "nr\030\010 \001(\002\022\021\n\thop_limit\030\t \001(\r\022\020\n\010want_ack\030" +
-      "\n \001(\010\022&\n\010priority\030\013 \001(\0162\024.MeshPacket.Pri" +
-      "ority\022\017\n\007rx_rssi\030\014 \001(\005\022$\n\007delayed\030\r \001(\0162" +
-      "\023.MeshPacket.Delayed\"[\n\010Priority\022\t\n\005UNSE" +
-      "T\020\000\022\007\n\003MIN\020\001\022\016\n\nBACKGROUND\020\n\022\013\n\007DEFAULT\020" +
-      "@\022\014\n\010RELIABLE\020F\022\007\n\003ACK\020x\022\007\n\003MAX\020\177\"B\n\007Del" +
-      "ayed\022\014\n\010NO_DELAY\020\000\022\025\n\021DELAYED_BROADCAST\020" +
-      "\001\022\022\n\016DELAYED_DIRECT\020\002B\021\n\017payload_variant" +
-      "\"\222\001\n\010NodeInfo\022\013\n\003num\030\001 \001(\r\022\023\n\004user\030\002 \001(\013" +
-      "2\005.User\022\033\n\010position\030\003 \001(\0132\t.Position\022\013\n\003" +
-      "snr\030\004 \001(\002\022\022\n\nlast_heard\030\005 \001(\007\022&\n\016device_" +
-      "metrics\030\006 \001(\0132\016.DeviceMetrics\"\206\003\n\nMyNode" +
-      "Info\022\023\n\013my_node_num\030\001 \001(\r\022\017\n\007has_gps\030\002 \001" +
-      "(\010\022\024\n\014max_channels\030\003 \001(\r\022\030\n\020firmware_ver" +
-      "sion\030\004 \001(\t\022&\n\nerror_code\030\005 \001(\0162\022.Critica" +
-      "lErrorCode\022\025\n\rerror_address\030\006 \001(\r\022\023\n\013err" +
-      "or_count\030\007 \001(\r\022\024\n\014reboot_count\030\010 \001(\r\022\017\n\007" +
-      "bitrate\030\t \001(\002\022\034\n\024message_timeout_msec\030\n " +
-      "\001(\r\022\027\n\017min_app_version\030\013 \001(\r\022\025\n\rair_peri" +
-      "od_tx\030\014 \003(\r\022\025\n\rair_period_rx\030\r \003(\r\022\020\n\010ha" +
-      "s_wifi\030\016 \001(\010\022\033\n\023channel_utilization\030\017 \001(" +
-      "\002\022\023\n\013air_util_tx\030\020 \001(\002\"\265\001\n\tLogRecord\022\017\n\007" +
-      "message\030\001 \001(\t\022\014\n\004time\030\002 \001(\007\022\016\n\006source\030\003 " +
-      "\001(\t\022\037\n\005level\030\004 \001(\0162\020.LogRecord.Level\"X\n\005" +
-      "Level\022\t\n\005UNSET\020\000\022\014\n\010CRITICAL\0202\022\t\n\005ERROR\020" +
-      "(\022\013\n\007WARNING\020\036\022\010\n\004INFO\020\024\022\t\n\005DEBUG\020\n\022\t\n\005T" +
-      "RACE\020\005\"\274\002\n\tFromRadio\022\n\n\002id\030\001 \001(\r\022\035\n\006pack" +
-      "et\030\002 \001(\0132\013.MeshPacketH\000\022\036\n\007my_info\030\003 \001(\013" +
-      "2\013.MyNodeInfoH\000\022\036\n\tnode_info\030\004 \001(\0132\t.Nod" +
-      "eInfoH\000\022\031\n\006config\030\005 \001(\0132\007.ConfigH\000\022 \n\nlo" +
-      "g_record\030\006 \001(\0132\n.LogRecordH\000\022\034\n\022config_c" +
-      "omplete_id\030\007 \001(\rH\000\022\022\n\010rebooted\030\010 \001(\010H\000\022%" +
-      "\n\014moduleConfig\030\t \001(\0132\r.ModuleConfigH\000\022\033\n" +
-      "\007channel\030\n \001(\0132\010.ChannelH\000B\021\n\017payload_va" +
-      "riant\"k\n\007ToRadio\022\035\n\006packet\030\001 \001(\0132\013.MeshP" +
-      "acketH\000\022\030\n\016want_config_id\030\003 \001(\rH\000\022\024\n\ndis" +
-      "connect\030\004 \001(\010H\000B\021\n\017payload_variant\"5\n\nCo" +
-      "mpressed\022\031\n\007portnum\030\001 \001(\0162\010.PortNum\022\014\n\004d" +
-      "ata\030\002 \001(\014*\371\003\n\rHardwareModel\022\t\n\005UNSET\020\000\022\014" +
-      "\n\010TLORA_V2\020\001\022\014\n\010TLORA_V1\020\002\022\022\n\016TLORA_V2_1" +
-      "_1P6\020\003\022\t\n\005TBEAM\020\004\022\017\n\013HELTEC_V2_0\020\005\022\016\n\nTB" +
-      "EAM_V0P7\020\006\022\n\n\006T_ECHO\020\007\022\020\n\014TLORA_V1_1P3\020\010" +
-      "\022\013\n\007RAK4631\020\t\022\017\n\013HELTEC_V2_1\020\n\022\r\n\tHELTEC" +
-      "_V1\020\013\022\030\n\024LILYGO_TBEAM_S3_CORE\020\014\022\014\n\010RAK11" +
-      "200\020\r\022\013\n\007NANO_G1\020\016\022\022\n\016TLORA_V2_1_1P8\020\017\022\016" +
-      "\n\nSTATION_G1\020\031\022\021\n\rLORA_RELAY_V1\020 \022\016\n\nNRF" +
-      "52840DK\020!\022\007\n\003PPR\020\"\022\017\n\013GENIEBLOCKS\020#\022\021\n\rN" +
-      "RF52_UNKNOWN\020$\022\r\n\tPORTDUINO\020%\022\017\n\013ANDROID" +
-      "_SIM\020&\022\n\n\006DIY_V1\020\'\022\025\n\021NRF52840_PCA10059\020" +
-      "(\022\n\n\006DR_DEV\020)\022\013\n\007M5STACK\020*\022\r\n\tHELTEC_V3\020" +
-      "+\022\021\n\rHELTEC_WSL_V3\020,\022\017\n\nPRIVATE_HW\020\377\001*,\n" +
-      "\tConstants\022\010\n\004ZERO\020\000\022\025\n\020DATA_PAYLOAD_LEN" +
-      "\020\355\001*\356\001\n\021CriticalErrorCode\022\010\n\004NONE\020\000\022\017\n\013T" +
-      "X_WATCHDOG\020\001\022\024\n\020SLEEP_ENTER_WAIT\020\002\022\014\n\010NO" +
-      "_RADIO\020\003\022\017\n\013UNSPECIFIED\020\004\022\025\n\021UBLOX_UNIT_" +
-      "FAILED\020\005\022\r\n\tNO_AXP192\020\006\022\031\n\025INVALID_RADIO" +
-      "_SETTING\020\007\022\023\n\017TRANSMIT_FAILED\020\010\022\014\n\010BROWN" +
-      "OUT\020\t\022\022\n\016SX1262_FAILURE\020\n\022\021\n\rRADIO_SPI_B" +
-      "UG\020\013BG\n\023com.geeksville.meshB\nMeshProtosH" +
-      "\003Z\"github.com/meshtastic/go/generatedb\006p" +
-      "roto3"
+      "NNEL\020\006\022\r\n\tTOO_LARGE\020\007\022\017\n\013NO_RESPONSE\020\010\022\024" +
+      "\n\020DUTY_CYCLE_LIMIT\020\t\022\017\n\013BAD_REQUEST\020 \022\022\n" +
+      "\016NOT_AUTHORIZED\020!B\t\n\007variant\"\234\001\n\004Data\022\031\n" +
+      "\007portnum\030\001 \001(\0162\010.PortNum\022\017\n\007payload\030\002 \001(" +
+      "\014\022\025\n\rwant_response\030\003 \001(\010\022\014\n\004dest\030\004 \001(\007\022\016" +
+      "\n\006source\030\005 \001(\007\022\022\n\nrequest_id\030\006 \001(\007\022\020\n\010re" +
+      "ply_id\030\007 \001(\007\022\r\n\005emoji\030\010 \001(\007\"\202\001\n\010Waypoint" +
+      "\022\n\n\002id\030\001 \001(\r\022\022\n\nlatitude_i\030\002 \001(\017\022\023\n\013long" +
+      "itude_i\030\003 \001(\017\022\016\n\006expire\030\004 \001(\r\022\016\n\006locked\030" +
+      "\005 \001(\010\022\014\n\004name\030\006 \001(\t\022\023\n\013description\030\007 \001(\t" +
+      "\"\313\003\n\nMeshPacket\022\014\n\004from\030\001 \001(\007\022\n\n\002to\030\002 \001(" +
+      "\007\022\017\n\007channel\030\003 \001(\r\022\030\n\007decoded\030\004 \001(\0132\005.Da" +
+      "taH\000\022\023\n\tencrypted\030\005 \001(\014H\000\022\n\n\002id\030\006 \001(\007\022\017\n" +
+      "\007rx_time\030\007 \001(\007\022\016\n\006rx_snr\030\010 \001(\002\022\021\n\thop_li" +
+      "mit\030\t \001(\r\022\020\n\010want_ack\030\n \001(\010\022&\n\010priority\030" +
+      "\013 \001(\0162\024.MeshPacket.Priority\022\017\n\007rx_rssi\030\014" +
+      " \001(\005\022$\n\007delayed\030\r \001(\0162\023.MeshPacket.Delay" +
+      "ed\"[\n\010Priority\022\t\n\005UNSET\020\000\022\007\n\003MIN\020\001\022\016\n\nBA" +
+      "CKGROUND\020\n\022\013\n\007DEFAULT\020@\022\014\n\010RELIABLE\020F\022\007\n" +
+      "\003ACK\020x\022\007\n\003MAX\020\177\"B\n\007Delayed\022\014\n\010NO_DELAY\020\000" +
+      "\022\025\n\021DELAYED_BROADCAST\020\001\022\022\n\016DELAYED_DIREC" +
+      "T\020\002B\021\n\017payload_variant\"\222\001\n\010NodeInfo\022\013\n\003n" +
+      "um\030\001 \001(\r\022\023\n\004user\030\002 \001(\0132\005.User\022\033\n\010positio" +
+      "n\030\003 \001(\0132\t.Position\022\013\n\003snr\030\004 \001(\002\022\022\n\nlast_" +
+      "heard\030\005 \001(\007\022&\n\016device_metrics\030\006 \001(\0132\016.De" +
+      "viceMetrics\"\206\003\n\nMyNodeInfo\022\023\n\013my_node_nu" +
+      "m\030\001 \001(\r\022\017\n\007has_gps\030\002 \001(\010\022\024\n\014max_channels" +
+      "\030\003 \001(\r\022\030\n\020firmware_version\030\004 \001(\t\022&\n\nerro" +
+      "r_code\030\005 \001(\0162\022.CriticalErrorCode\022\025\n\rerro" +
+      "r_address\030\006 \001(\r\022\023\n\013error_count\030\007 \001(\r\022\024\n\014" +
+      "reboot_count\030\010 \001(\r\022\017\n\007bitrate\030\t \001(\002\022\034\n\024m" +
+      "essage_timeout_msec\030\n \001(\r\022\027\n\017min_app_ver" +
+      "sion\030\013 \001(\r\022\025\n\rair_period_tx\030\014 \003(\r\022\025\n\rair" +
+      "_period_rx\030\r \003(\r\022\020\n\010has_wifi\030\016 \001(\010\022\033\n\023ch" +
+      "annel_utilization\030\017 \001(\002\022\023\n\013air_util_tx\030\020" +
+      " \001(\002\"\265\001\n\tLogRecord\022\017\n\007message\030\001 \001(\t\022\014\n\004t" +
+      "ime\030\002 \001(\007\022\016\n\006source\030\003 \001(\t\022\037\n\005level\030\004 \001(\016" +
+      "2\020.LogRecord.Level\"X\n\005Level\022\t\n\005UNSET\020\000\022\014" +
+      "\n\010CRITICAL\0202\022\t\n\005ERROR\020(\022\013\n\007WARNING\020\036\022\010\n\004" +
+      "INFO\020\024\022\t\n\005DEBUG\020\n\022\t\n\005TRACE\020\005\"\274\002\n\tFromRad" +
+      "io\022\n\n\002id\030\001 \001(\r\022\035\n\006packet\030\002 \001(\0132\013.MeshPac" +
+      "ketH\000\022\036\n\007my_info\030\003 \001(\0132\013.MyNodeInfoH\000\022\036\n" +
+      "\tnode_info\030\004 \001(\0132\t.NodeInfoH\000\022\031\n\006config\030" +
+      "\005 \001(\0132\007.ConfigH\000\022 \n\nlog_record\030\006 \001(\0132\n.L" +
+      "ogRecordH\000\022\034\n\022config_complete_id\030\007 \001(\rH\000" +
+      "\022\022\n\010rebooted\030\010 \001(\010H\000\022%\n\014moduleConfig\030\t \001" +
+      "(\0132\r.ModuleConfigH\000\022\033\n\007channel\030\n \001(\0132\010.C" +
+      "hannelH\000B\021\n\017payload_variant\"k\n\007ToRadio\022\035" +
+      "\n\006packet\030\001 \001(\0132\013.MeshPacketH\000\022\030\n\016want_co" +
+      "nfig_id\030\003 \001(\rH\000\022\024\n\ndisconnect\030\004 \001(\010H\000B\021\n" +
+      "\017payload_variant\"5\n\nCompressed\022\031\n\007portnu" +
+      "m\030\001 \001(\0162\010.PortNum\022\014\n\004data\030\002 \001(\014*\212\004\n\rHard" +
+      "wareModel\022\t\n\005UNSET\020\000\022\014\n\010TLORA_V2\020\001\022\014\n\010TL" +
+      "ORA_V1\020\002\022\022\n\016TLORA_V2_1_1P6\020\003\022\t\n\005TBEAM\020\004\022" +
+      "\017\n\013HELTEC_V2_0\020\005\022\016\n\nTBEAM_V0P7\020\006\022\n\n\006T_EC" +
+      "HO\020\007\022\020\n\014TLORA_V1_1P3\020\010\022\013\n\007RAK4631\020\t\022\017\n\013H" +
+      "ELTEC_V2_1\020\n\022\r\n\tHELTEC_V1\020\013\022\030\n\024LILYGO_TB" +
+      "EAM_S3_CORE\020\014\022\014\n\010RAK11200\020\r\022\013\n\007NANO_G1\020\016" +
+      "\022\022\n\016TLORA_V2_1_1P8\020\017\022\017\n\013TLORA_T3_S3\020\020\022\016\n" +
+      "\nSTATION_G1\020\031\022\021\n\rLORA_RELAY_V1\020 \022\016\n\nNRF5" +
+      "2840DK\020!\022\007\n\003PPR\020\"\022\017\n\013GENIEBLOCKS\020#\022\021\n\rNR" +
+      "F52_UNKNOWN\020$\022\r\n\tPORTDUINO\020%\022\017\n\013ANDROID_" +
+      "SIM\020&\022\n\n\006DIY_V1\020\'\022\025\n\021NRF52840_PCA10059\020(" +
+      "\022\n\n\006DR_DEV\020)\022\013\n\007M5STACK\020*\022\r\n\tHELTEC_V3\020+" +
+      "\022\021\n\rHELTEC_WSL_V3\020,\022\017\n\nPRIVATE_HW\020\377\001*,\n\t" +
+      "Constants\022\010\n\004ZERO\020\000\022\025\n\020DATA_PAYLOAD_LEN\020" +
+      "\355\001*\356\001\n\021CriticalErrorCode\022\010\n\004NONE\020\000\022\017\n\013TX" +
+      "_WATCHDOG\020\001\022\024\n\020SLEEP_ENTER_WAIT\020\002\022\014\n\010NO_" +
+      "RADIO\020\003\022\017\n\013UNSPECIFIED\020\004\022\025\n\021UBLOX_UNIT_F" +
+      "AILED\020\005\022\r\n\tNO_AXP192\020\006\022\031\n\025INVALID_RADIO_" +
+      "SETTING\020\007\022\023\n\017TRANSMIT_FAILED\020\010\022\014\n\010BROWNO" +
+      "UT\020\t\022\022\n\016SX1262_FAILURE\020\n\022\021\n\rRADIO_SPI_BU" +
+      "G\020\013B^\n\023com.geeksville.meshB\nMeshProtosH\003" +
+      "Z\"github.com/meshtastic/go/generated\252\002\024M" +
+      "eshtastic.Protobufsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
