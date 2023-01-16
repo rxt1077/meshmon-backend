@@ -17,8 +17,14 @@ jobs:
       run: lein test
     - name: Build
       run: lein uberjar
+    - name: Build Changelog
+      id: build_changelog
+      uses: mikepenz/release-changelog-builder-action@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: target/*.jar
+        body: ${{steps.github_release.outputs.changelog}}
