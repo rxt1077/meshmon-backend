@@ -23,7 +23,7 @@
   :java-source-paths ["src/java"]
   :jar-name "meshmon-backend-%s.jar"
   :uberjar-name "meshmon-backend-%s-standalone.jar"
-  :plugins [[com.appsflyer/lein-protodeps "1.0.5"]]
+  :plugins [[com.appsflyer/lein-protodeps "1.0.5"] [com.github.clj-kondo/lein-clj-kondo "0.2.4"]]
   :lein-protodeps {:output-path "src/java"
                    :proto-version "3.21.12"
                    :repos {:meshtastic {:repo-type :git

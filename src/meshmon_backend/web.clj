@@ -1,16 +1,16 @@
 (ns meshmon-backend.web
-  (:require [compojure.core :refer :all]
+  (:require [compojure.core :refer [routes GET]]
             [compojure.route :as route]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [taoensso.timbre :as timbre]
             [ring.logger :as logger]
             [meshmon-backend.db :as db]
-            [meshmon-backend.pb :as pb]
-            [clojure.data.json :as json]))
+            [meshmon-backend.pb :as pb]))
 
-(defn response [rows]
+(defn response
   "Returns the rows as a protobuf response"
+  [rows]
   {:status 200
    :headers {"Content-Type" "application/x-protobuf"}
    :body (pb/proto-map->bytes (pb/clj-map->response {:rows rows}))})
@@ -28,8 +28,9 @@
     (route/files "/" {:root static})
     (route/not-found "Not Found")))
 
-(defn app [ds static]
+(defn app
   "Returns the ring app for our web API"
+  [ds static]
   (-> (app-routes ds static)
       (wrap-defaults site-defaults)
       (wrap-cors :access-control-allow-origin [#".*"]

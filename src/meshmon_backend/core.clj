@@ -1,12 +1,7 @@
 (ns meshmon-backend.core
-  (:require [compojure.core :refer :all]
-            [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [next.jdbc :as jdbc]
-            [next.jdbc.result-set :as result-set]
-            [clojure.data.json :as json]
-            [ring.adapter.jetty :as ring-jetty]
+  (:require [ring.adapter.jetty :as ring-jetty]
             [clojure.tools.cli :refer [parse-opts]]
+            [clojure.string :as string]
             [taoensso.timbre :as timbre]
             [meshmon-backend.serial :as serial]
             [meshmon-backend.db :as db]
@@ -50,10 +45,10 @@
     (cond
       errors (doall (map #(println %) errors))
       help (print-usage (:summary opts))
-      :default
+      :else
       (let [_ (timbre/set-min-level!
-                (keyword (clojure.string/lower-case log-level)))
+                (keyword (string/lower-case log-level)))
             ds (db/start url)
             app (web/app ds static)
-            _ (if record (serial/start! serial-port ds))]
+            _ (if record (serial/start! serial-port ds) nil)]
           (ring-jetty/run-jetty app {:port port})))))

@@ -1,15 +1,13 @@
 (ns meshmon-backend.db-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest testing is]]
             [meshmon-backend.pb :as pb]
-            [meshmon-backend.db :refer :all]
-            [camel-snake-kebab.core :as csk]
-            [clojure.data.json :as json]
-            [clojure.data :refer [diff]])
+            [meshmon-backend.db :refer [get-all save-mesh-packet! start]])
   (:import [com.google.protobuf ByteString]))
 
 
-(defn make-test-packet []
+(defn make-test-packet
   "Builds a valid, empty position MeshPacket proto-map"
+  []
   (let [rx-time (quot (System/currentTimeMillis) 1000)
         pos (pb/clj-map->position {})
         pos-bytes (pb/proto-map->bytes pos)
@@ -17,8 +15,9 @@
         data (pb/clj-map->data {:portnum :POSITION_APP :payload pos-bs})]
     (pb/clj-map->mesh-packet {:rx-time rx-time :decoded data})))
 
-(defn bs->hash [map-with-bs]
+(defn bs->hash
   "Recursively replaces ByteStrings in a map with their hashCode"
+  [map-with-bs]
   (reduce-kv
     (fn [m k v]
       (if (map? v)

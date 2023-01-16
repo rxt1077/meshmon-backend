@@ -1,79 +1,53 @@
 (ns meshmon-backend.db
   (:require [next.jdbc :as jdbc]
             [next.jdbc.result-set :as result-set]
-            [clojure.data.json :as json]
-            [meshmon-backend.pb :as pb]
-            [clojure.data.json :as json]
-            [camel-snake-kebab.core :as csk]
-            [taoensso.timbre :as timbre :refer [trace debug]]
-            [clojure.set :refer [rename-keys]]
-            [clojure.string :refer [starts-with?]]))
+            [meshmon-backend.pb :as pb]))
 
-;;(defn fix-labels [row]
-;;  "Fix the names of some labels in a row"
-;;  (rename-keys row
-;;               {:packet-from :from
-;;                :packet-to :to}))
-;;
-;;(defn fix-bools [row]
-;;  "Convert 0 and 1 int values to boolean values"
-;;  (assoc row :want-ack (= 1 (:want-ack row))))
-;;
-;;(defn fix-keywords [row]
-;;  "Convert any string value that starts with ':' to a label. Enums are labels
-;;  but sqlite stores them as strings."
-;;  (reduce-kv
-;;    (fn [m k v]
-;;      (if (starts-with? v ":") (assoc m k (keyword v)) (assoc m k v)))
-;;    {}
-;;    row))
-
-(defn query [ds query-vec]
+(defn query
   "Performs a query and returns it as a vector of Row proto-maps with MeshPacket
   proto-maps inside them"
+  [ds query-vec]
   (mapv
     #(pb/clj-map->row (assoc % :packet (pb/bytes->mesh-packet (:packet %))))
     (jdbc/execute! ds query-vec
                    {:builder-fn result-set/as-unqualified-kebab-maps})))
 
-(defn get-all [ds]
+(defn get-all
   "Gets all the packets in the DB"
+  [ds]
   (query ds ["SELECT * FROM packets;"]))
 
-(defn get-after [ds rowid]
+(defn get-after
   "Gets all the packets after a certain rowid in the DB"
+  [ds rowid]
   (query ds ["SELECT * FROM packets WHERE rowid > ?;" rowid]))
 
-(defn get-one-after [ds rowid]
+(defn get-one-after
   "Gets a single packet (still in a list) after a certain rowid"
+  [ds rowid]
   (query ds ["SELECT * FROM packets WHERE rowid > ? LIMIT 1;" rowid]))
 
-(defn get-range [ds start end]
+(defn get-range
   "Gets packets within a range of rx_times (inclusive)"
+  [ds start end]
   (query ds ["SELECT * FROM packets WHERE rx_time >= ? AND rx_time <=?;"
              start end]))
 
-;;(defn value-fn [k v]
-;;  "Not all types used by Pronto are easily encoded to JSON. This function fixes
-;;  the problematic types."
-;;  (case k
-;;    :macaddr (str (interpose ":" (map #(format "%02x" %) v)))
-;;    v))
-
-(defn save-mesh-packet! [ds mesh-packet]
+(defn save-mesh-packet!
   "Saves a MeshPacket proto-map to the database."
+  [ds mesh-packet]
   (jdbc/execute! ds ["INSERT INTO packets (rx_time, packet) VALUES (?, ?)"
                      (:rx-time mesh-packet)
                      (pb/proto-map->bytes mesh-packet)]))
 
-(defn start [jdbc-url]
+(defn start
   "Gets the datasource for the DB based on the URL given. Creates the packets
   table if it doesn't exist."
+  [jdbc-url]
   (let [ds (jdbc/get-datasource {:jdbcUrl jdbc-url})
         query-vec ["CREATE TABLE IF NOT EXISTS packets (
                    rowid INTEGER PRIMARY KEY,
                    rx_time INTEGER,
                    packet BLOB);"]]
-    (do
-      (jdbc/execute! ds query-vec)
-      ds)))
+    (jdbc/execute! ds query-vec)
+    ds))
