@@ -1,4 +1,4 @@
-(defproject meshmon-backend "0.2.3"
+(defproject meshmon-backend "1.0.0"
   :description "Backend for MeshMon that serves packets from a sqlite3 database"
   :url "http://github.com/rxt1077/MeshMon"
   :min-lein-version "2.0.0"

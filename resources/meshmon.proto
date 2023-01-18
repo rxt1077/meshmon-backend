@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "com.geeksville.mesh";
+option optimize_for = LITE_RUNTIME;
+
+import "mesh.proto";
+
+message Row {
+  int32 rowid = 1;
+  fixed32 rx_time = 2;
+  MeshPacket packet = 3;
+}
+
+message Response {
+  repeated Row rows = 1;
+}
